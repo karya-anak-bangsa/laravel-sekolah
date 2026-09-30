@@ -53,7 +53,6 @@ it('merender layout admin dengan judul, konten, dan tanpa Bootstrap', function (
 });
 
 it('menampilkan menu admin hanya untuk route yang ada dan permission yang dimiliki', function () {
-    rute('get', '/uji/dashboard', 'admin.dashboard');
     rute('get', '/uji/pegawai', 'admin.pegawai.index');
     Permission::create(['name' => 'dashboard.view', 'guard_name' => 'web']);
     Permission::create(['name' => 'pegawai.view', 'guard_name' => 'web']);
@@ -93,7 +92,6 @@ it('menandai item menu aktif sesuai route yang sedang dibuka', function () {
 });
 
 it('merender nama pengguna di sidebar dan tombol keluar memakai POST dengan CSRF', function () {
-    rute('post', '/uji/keluar', 'admin.logout');
     $this->actingAs(User::factory()->create(['nama' => 'Budi Santoso']));
 
     $rendered = halamanAdmin();

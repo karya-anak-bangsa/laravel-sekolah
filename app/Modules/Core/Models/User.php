@@ -3,6 +3,7 @@
 namespace App\Modules\Core\Models;
 
 use App\Modules\Core\Database\Factories\UserFactory;
+use App\Modules\Core\Models\Scopes\UnitSekolahScope;
 use App\Modules\Kepegawaian\Models\Pegawai;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
@@ -31,8 +32,30 @@ class User extends Authenticatable
         ];
     }
 
+    private ?int $idUnitSekolah = null;
+
+    private bool $idUnitSekolahTerisi = false;
+
     public function pegawai(): BelongsTo
     {
         return $this->belongsTo(Pegawai::class, 'id_pegawai', 'id_pegawai');
+    }
+
+    /**
+     * Unit tempat pengguna bertugas, atau null bila tingkat yayasan / bukan pegawai (mis. super_admin).
+     * Dibaca tanpa global scope agar UnitSekolahScope tidak memanggil dirinya sendiri.
+     */
+    public function idUnitSekolah(): ?int
+    {
+        if (! $this->idUnitSekolahTerisi) {
+            $this->idUnitSekolah = $this->id_pegawai === null
+                ? null
+                : Pegawai::withoutGlobalScope(UnitSekolahScope::class)
+                    ->whereKey($this->id_pegawai)
+                    ->value('id_unit_sekolah');
+            $this->idUnitSekolahTerisi = true;
+        }
+
+        return $this->idUnitSekolah;
     }
 }

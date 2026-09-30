@@ -11,4 +11,11 @@ return [
     'alamat' => env('SEKOLAH_ALAMAT'),
     'telepon' => env('SEKOLAH_TELEPON'),
     'email' => env('SEKOLAH_EMAIL'),
+
+    // Akun Super Administrator awal (dipakai SuperAdminSeeder); isi di .env, jangan di kode.
+    'admin_awal' => [
+        'nama' => env('ADMIN_NAMA', 'Super Administrator'),
+        'username' => env('ADMIN_USERNAME'),
+        'password' => env('ADMIN_PASSWORD'),
+    ],
 ];
