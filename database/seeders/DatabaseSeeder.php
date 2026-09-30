@@ -10,12 +10,17 @@ class DatabaseSeeder extends Seeder
     /**
      * Seed the application's database.
      *
-     * Seeder tiap modul dipanggil dari sini seiring modulnya dikerjakan.
+     * Seeder tiap modul dipanggil dari sini seiring modulnya dikerjakan. Data dummy (pegawai, kelas, siswa)
+     * hanya dibuat di environment lokal; di produksi hanya data dasar yang aman dijalankan ulang.
      */
     public function run(): void
     {
         $this->call([
             CoreSeeder::class,
         ]);
+
+        if (app()->environment('local')) {
+            $this->call(DataDummySeeder::class);
+        }
     }
 }

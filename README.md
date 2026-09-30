@@ -24,10 +24,14 @@ php artisan key:generate
    ```
 2. Sesuaikan `.env` bila perlu (`DB_*`, `APP_URL`). Isi `ADMIN_USERNAME` dan `ADMIN_PASSWORD` untuk akun
    Super Administrator awal (pakai kata sandi kuat; jangan di-commit).
-3. Migrasi dan isi data dasar (role, permission, Super Administrator, unit SMP/SMK, jurusan, tahun ajaran):
+3. Migrasi dan isi data (role, permission, Super Administrator, unit SMP/SMK, jurusan, tahun ajaran):
    ```bash
    php artisan migrate --seed
    ```
+   Bila `APP_ENV=local`, seeder juga membuat **data dummy** skala nyata (Faker `id_ID`, semua fiktif): 84 pegawai
+   beserta akun dan role, 36 rombel, dan ±1.150 siswa dengan orang tua. Semua akun dummy memakai kata sandi `password`
+   (username lihat di halaman Pengguna & Role; mis. akun petugas TU, kepala sekolah, wali kelas). Di environment lain
+   hanya data dasar yang dibuat, sehingga aman dijalankan di produksi.
 4. Jalankan:
    ```bash
    npm run dev          # Vite (admin + publik); untuk produksi: npm run build

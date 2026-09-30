@@ -74,6 +74,15 @@ bila ada jawaban yayasan, perbarui di sini dan buat migration/kode baru bila per
 - Wali kelas (`siswa.view-kelas`) hanya melihat siswa di kelas yang ia ampu pada tahun ajaran aktif, dan daftar anggota
   kelas itu; hanya-lihat. Menu "Siswa" tampil bila pengguna punya `siswa.view` atau `siswa.view-kelas`.
 
+## Data dummy (Fase 1D)
+- `DataDummySeeder` hanya jalan di environment non-produksi dan dipanggil otomatis oleh `DatabaseSeeder` hanya bila `APP_ENV=local`.
+  Dilewati bila sudah ada data pegawai/siswa. Semua akun dummy memakai kata sandi `password` dan tidak wajib ganti.
+- Komposisi pegawai (84): 1 pimpinan yayasan, SMP 26 guru + 3 TU, SMK 51 guru + 3 TU. Per unit: guru ke-1 kepala sekolah,
+  ke-2 dan ke-3 wakil, tiga guru terakhir guru piket; semua guru juga guru mapel; satu guru sebagai wali untuk tiap
+  rombel. Angka ini hanya untuk skala uji, bukan data resmi yayasan.
+- Kelas: SMP 7–9 × 4 rombel (VII-A…), SMK 10–12 × 4 jurusan × 2 rombel (mis. X RPL 1); 30–35 siswa per rombel;
+  ±6% siswa dibuat sebagai adik yang berbagi orang tua.
+
 ## Data dasar (seeder)
 - Nama unit "SMP Puspita Bangsa" dan "SMK Puspita Bangsa" adalah asumsi (belum ada nama resmi).
 - Jurusan SMK: Pariwisata (`PAR`), Bisnis Manajemen (`BM`), Teknik Komputer dan Jaringan (`TKJ`),
