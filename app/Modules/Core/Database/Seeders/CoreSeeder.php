@@ -11,6 +11,8 @@ class CoreSeeder extends Seeder
         $this->call([
             RolePermissionSeeder::class,
             SuperAdminSeeder::class,
+            UnitSekolahSeeder::class,
+            TahunAjaranSeeder::class,
         ]);
     }
 }

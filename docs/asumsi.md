@@ -30,6 +30,15 @@ bila ada jawaban yayasan, perbarui di sini dan buat migration/kode baru bila per
   (akun tidak ada, password salah, tipe akun salah) memakai pesan yang sama.
 - Setelah login pendaftar berhasil, sementara diarahkan ke beranda; area pendaftar dibuat di Fase 3.
 
+## Data dasar (seeder)
+- Nama unit "SMP Puspita Bangsa" dan "SMK Puspita Bangsa" adalah asumsi (belum ada nama resmi).
+- Jurusan SMK: Pariwisata (`PAR`), Bisnis Manajemen (`BM`), Teknik Komputer dan Jaringan (`TKJ`),
+  Rekayasa Perangkat Lunak (`RPL`). Kode `PAR` dan `BM` adalah asumsi; nama lengkap TKJ/RPL mengikuti lazimnya SMK.
+- Tahun ajaran awal 2026/2027 semester ganjil dan aktif (sistem dipakai awal semester genap Januari 2027;
+  ganti semester/tahun ajaran lewat CRUD tahun ajaran nanti).
+- Seeder ini hanya berisi struktur organisasi, bukan data pribadi, sehingga aman dijalankan di produksi.
+  Data dummy pegawai/siswa (Faker `id_ID`) dibuat di Fase 1 lewat seeder terpisah khusus lokal.
+
 ## Tampilan
 - Identitas yayasan di layout dibaca dari `config/sekolah.php` (`.env`) sampai `tb_pengaturan` dibuat di modul Company Profile.
 - Item menu di `config/menu.php` (nama route dan permission) adalah usulan; item baru tampil otomatis saat route-nya ada.
