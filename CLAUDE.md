@@ -47,9 +47,16 @@ Aturan:
 - Dua entry point Vite terpisah: `resources/js/admin.js` + `resources/scss/admin.scss`, dan
   `resources/js/public.js` + `resources/scss/public.scss`. Bootstrap tidak boleh termuat di panel admin.
 - Jangan menambahkan jQuery ke panel admin.
-- File asli template disimpan di `resources/templates/gentelella/` dan `resources/templates/unipulse/`
-  sebagai referensi dan **tidak diedit**. HTML template dipecah menjadi layout dan komponen Blade:
-  `layouts/admin.blade.php`, `layouts/public.blade.php`, `<x-admin.card>`, `<x-admin.table>`, `<x-form.input>`, dst.
+- **Gentelella** dipasang lewat npm (`gentelella`, tanpa salinan di repo; referensinya ada di
+  `node_modules/gentelella/production/`). `admin.js` hanya mengimpor `gentelella/v4/shell` dan
+  `admin.scss` meng-`@use` `gentelella/scss/v4/main`; sidebar/topbar dirender Blade, bukan JS template.
+- File asli **UniPulse** disimpan di `resources/templates/unipulse/` sebagai referensi dan **tidak diedit**;
+  `public.scss` meng-`@import` SCSS aslinya, dan pustakanya (bootstrap, aos, swiper, dst.) dari npm.
+- HTML template dipecah menjadi layout dan komponen Blade:
+  `layouts/admin.blade.php`, `layouts/admin-auth.blade.php`, `layouts/public.blade.php`, `<x-admin.card>`,
+  `<x-admin.table>`, `<x-form.input theme="admin|public">`, dst. Menu di `config/menu.php` (disaring
+  per route dan permission oleh `App\Support\Menu`).
+- Pint mengecualikan folder template (`pint.json`).
 - File lisensi UniPulse tidak di-commit.
 
 ## 3. Konvensi Database (TIDAK mengikuti konvensi Laravel)
