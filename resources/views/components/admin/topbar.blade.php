@@ -26,6 +26,9 @@
                     <div class="acct-name">{{ $user->nama }}</div>
                     <div class="acct-role">{{ $user->username }}</div>
                     <hr>
+                    @if (Route::has('admin.password.edit'))
+                        <a href="{{ route('admin.password.edit') }}">Ganti kata sandi</a>
+                    @endif
                     @if (Route::has('admin.logout'))
                         <form method="POST" action="{{ route('admin.logout') }}">
                             @csrf

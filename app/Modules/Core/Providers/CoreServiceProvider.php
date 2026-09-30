@@ -4,6 +4,7 @@ namespace App\Modules\Core\Providers;
 
 use App\Modules\Core\Enums\Role;
 use App\Modules\Core\Http\Middleware\EnsureAdminArea;
+use App\Modules\Core\Http\Middleware\EnsurePasswordChanged;
 use App\Modules\Core\Models\User;
 use App\Support\ModuleServiceProvider;
 use Illuminate\Support\Facades\Gate;
@@ -19,6 +20,7 @@ class CoreServiceProvider extends ModuleServiceProvider
     public function boot(): void
     {
         Route::aliasMiddleware('admin.area', EnsureAdminArea::class);
+        Route::aliasMiddleware('password.changed', EnsurePasswordChanged::class);
 
         // Super Administrator lolos semua pengecekan permission (company profile, PPDB, dst.).
         Gate::before(function (User $user) {

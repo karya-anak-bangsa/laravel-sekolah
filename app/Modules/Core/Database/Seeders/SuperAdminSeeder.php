@@ -28,6 +28,7 @@ class SuperAdminSeeder extends Seeder
                 'nama' => config('sekolah.admin_awal.nama'),
                 'username' => $username,
                 'password' => $password,
+                'wajib_ganti_password' => true, // kata sandi awal dari .env wajib diganti saat login pertama
             ]);
 
         $user->assignRole(Role::SuperAdmin->value);

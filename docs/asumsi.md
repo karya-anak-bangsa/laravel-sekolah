@@ -42,6 +42,24 @@ bila ada jawaban yayasan, perbarui di sini dan buat migration/kode baru bila per
 - Unit dengan jurusan/kelas/pegawai, dan jurusan yang dipakai kelas, tidak bisa dihapus.
 - Daftar memakai paginasi server-side (25 baris) dan filter lewat query string; DataTables client-side tidak dipakai.
 
+## Kepegawaian dan akun (Fase 1B)
+- `tb_pegawai` tetap minimal (nama, unit, jenis); kolom tambahan (NIP, jenis kelamin, no HP, dst.) ditambah nanti
+  lewat migration baru saat yayasan memberi data acuan (disetujui 2026-10-01).
+- Pegawai tingkat yayasan (`pimpinan_yayasan`) tanpa unit; hanya pengguna tingkat yayasan yang boleh mencatatnya.
+  Guru yang masih menjadi wali kelas tidak bisa dihapus atau diganti jenisnya.
+- Menghapus pegawai = soft delete pegawai + menonaktifkan akun loginnya (soft delete `tb_user`).
+- Akun dibuat dari pegawai yang belum punya akun: username otomatis `nama.dengan.titik` (ditambah angka bila dipakai),
+  kata sandi sementara acak 10 karakter ditampilkan sekali, dan wajib diganti saat login pertama
+  (`tb_user.wajib_ganti_password`). Reset password memakai mekanisme yang sama.
+- **Petugas TU dapat membuat akun tetapi tidak memberi role** (hanya `super_admin` yang punya `pengguna.assign-role`),
+  sehingga akun buatan TU baru berfungsi setelah super_admin menetapkan role. Belum ada role bawaan per jenis pegawai
+  agar tidak mengarang aturan hak akses; bisa diubah bila yayasan menginginkannya.
+- Menonaktifkan/mengaktifkan akun memakai permission `pengguna.delete` (hanya super_admin). TU boleh ubah username dan reset sandi
+  akun pegawai di unitnya, kecuali akun super_admin. Akun sendiri tidak bisa dinonaktifkan, dan super_admin tidak bisa
+  mencabut role super_admin dari dirinya sendiri.
+- Kata sandi baru minimal 8 karakter, berisi huruf dan angka, serta berbeda dari yang lama.
+- Akun Super Administrator awal dari seeder juga wajib mengganti kata sandi saat login pertama.
+
 ## Data dasar (seeder)
 - Nama unit "SMP Puspita Bangsa" dan "SMK Puspita Bangsa" adalah asumsi (belum ada nama resmi).
 - Jurusan SMK: Pariwisata (`PAR`), Bisnis Manajemen (`BM`), Teknik Komputer dan Jaringan (`TKJ`),

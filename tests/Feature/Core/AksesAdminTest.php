@@ -48,11 +48,18 @@ it('menolak pegawai tanpa role/permission dengan 403', function () {
 });
 
 it('menampilkan menu sesuai permission, bukan nama role', function () {
-    // Belum ada route untuk modul lain, jadi hanya Dashboard yang boleh muncul pada semua role.
     $this->actingAs(penggunaDenganRole(Role::PetugasTu))
         ->get(route('admin.dashboard'))
         ->assertSee('Dashboard')
-        ->assertDontSee('Pegawai');
+        ->assertSee(route('admin.pegawai.index'), false)
+        ->assertSee(route('admin.kelas.index'), false)
+        ->assertDontSee(route('admin.unit-sekolah.index'), false);
+
+    // Guru mapel hanya punya dashboard: tidak ada menu master data.
+    $this->actingAs(penggunaDenganRole(Role::GuruMapel))
+        ->get(route('admin.dashboard'))
+        ->assertDontSee(route('admin.pegawai.index'), false)
+        ->assertDontSee(route('admin.pengguna.index'), false);
 });
 
 it('membuat super_admin lolos semua permission tanpa diberi satu per satu', function () {

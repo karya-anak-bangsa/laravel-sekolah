@@ -4,11 +4,13 @@ namespace App\Modules\Core\Models;
 
 use App\Modules\Core\Database\Factories\UserFactory;
 use App\Modules\Core\Models\Scopes\UnitSekolahScope;
+use App\Modules\Core\Policies\PenggunaPolicy;
 use App\Modules\Kepegawaian\Models\Pegawai;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Attributes\Table;
 use Illuminate\Database\Eloquent\Attributes\UseFactory;
+use Illuminate\Database\Eloquent\Attributes\UsePolicy;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -17,7 +19,8 @@ use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 
 #[Table('tb_user', key: 'id_user')]
-#[Fillable(['id_pegawai', 'nama', 'username', 'no_hp', 'email', 'password'])]
+#[Fillable(['id_pegawai', 'nama', 'username', 'no_hp', 'email', 'password', 'wajib_ganti_password'])]
+#[UsePolicy(PenggunaPolicy::class)]
 #[Hidden(['password', 'remember_token'])]
 #[UseFactory(UserFactory::class)]
 class User extends Authenticatable
@@ -29,6 +32,7 @@ class User extends Authenticatable
     {
         return [
             'password' => 'hashed',
+            'wajib_ganti_password' => 'boolean',
         ];
     }
 

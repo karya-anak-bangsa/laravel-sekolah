@@ -7,9 +7,11 @@ use App\Modules\Core\Models\Scopes\UnitSekolahScope;
 use App\Modules\Core\Models\UnitSekolah;
 use App\Modules\Core\Models\User;
 use App\Modules\Kepegawaian\Enums\JenisPegawai;
+use App\Modules\Kepegawaian\Policies\PegawaiPolicy;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\ScopedBy;
 use Illuminate\Database\Eloquent\Attributes\Table;
+use Illuminate\Database\Eloquent\Attributes\UsePolicy;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -19,6 +21,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 #[Table('tb_pegawai', key: 'id_pegawai')]
 #[Fillable(['id_unit_sekolah', 'nama_pegawai', 'jenis_pegawai'])]
 #[ScopedBy([UnitSekolahScope::class])]
+#[UsePolicy(PegawaiPolicy::class)]
 class Pegawai extends Model
 {
     use SoftDeletes;
