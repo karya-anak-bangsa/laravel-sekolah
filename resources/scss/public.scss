@@ -1,0 +1,10 @@
+// Situs publik — UniPulse (Bootstrap 5).
+// Urutan cascade: Bootstrap -> pustaka -> SCSS asli template -> override milik kita.
+@import 'bootstrap/dist/css/bootstrap.min.css';
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+@import 'aos/dist/aos.css';
+@import 'swiper/swiper-bundle.css';
+@import 'glightbox/dist/css/glightbox.min.css';
+
+// SCSS asli template (tidak diedit): variabel warna, header, navmenu, footer, seksi-seksi.
+@import '../templates/unipulse/assets/scss/main';
