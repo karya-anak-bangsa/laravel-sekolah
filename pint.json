@@ -1,0 +1,7 @@
+{
+    "preset": "laravel",
+    "exclude": [
+        "public/template-frontend",
+        "resources/templates"
+    ]
+}
