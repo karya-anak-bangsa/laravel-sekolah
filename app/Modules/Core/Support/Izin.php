@@ -27,6 +27,7 @@ final class Izin
     /** Permission di luar pola CRUD. */
     public const KHUSUS = [
         'pengguna.assign-role', // mengubah role pengguna, hanya super_admin
+        'siswa.view-kelas', // melihat siswa hanya di kelas yang diampu (wali kelas)
     ];
 
     /** Seluruh permission sistem (dipakai seeder dan untuk super_admin). */

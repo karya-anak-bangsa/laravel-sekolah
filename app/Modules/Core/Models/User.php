@@ -36,6 +36,14 @@ class User extends Authenticatable
 
     private bool $idUnitSekolahTerisi = false;
 
+    /** Apakah pengguna boleh mengakses data milik unit tertentu (tingkat yayasan/super_admin: semua unit). */
+    public function dapatMengaksesUnit(?int $idUnitSekolah): bool
+    {
+        $milikku = $this->idUnitSekolah();
+
+        return $milikku === null || $milikku === $idUnitSekolah;
+    }
+
     public function pegawai(): BelongsTo
     {
         return $this->belongsTo(Pegawai::class, 'id_pegawai', 'id_pegawai');

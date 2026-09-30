@@ -51,10 +51,13 @@ enum Role: string
                 ...Izin::crud('siswa'),
                 ...Izin::crud('pegawai'),
                 ...Izin::crud('berita'),
+                // TU menempatkan siswa ke kelas dan menyiapkan tahun ajaran (disetujui 2026-10-01).
+                ...Izin::crud('kelas'),
+                ...Izin::crud('tahun-ajaran'),
                 // Akun pegawai dibuat/dikelola TU (CLAUDE.md §5); mengubah role tetap hanya super_admin.
                 'pengguna.view', 'pengguna.create', 'pengguna.update',
             ],
-            self::WaliKelas => [Izin::DASHBOARD_VIEW, 'siswa.view'],
+            self::WaliKelas => [Izin::DASHBOARD_VIEW, 'siswa.view-kelas'],
             self::GuruMapel, self::GuruPiket => [Izin::DASHBOARD_VIEW],
             self::Pendaftar => [],
         };

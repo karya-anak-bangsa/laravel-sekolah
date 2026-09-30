@@ -39,16 +39,19 @@ it('menerapkan matriks permission yang disepakati', function () {
             ->and($punya($role, 'pegawai.update'))->toBeFalse();
     }
 
-    // Petugas TU: kelola PPDB, siswa, pegawai, berita; bukan kelas/tahun ajaran/ubah role
+    // Petugas TU: kelola PPDB, siswa, pegawai, berita; kelas dan tahun ajaran, bukan unit/ubah role
     expect($punya('petugas_tu', 'ppdb.delete'))->toBeTrue()
         ->and($punya('petugas_tu', 'siswa.update'))->toBeTrue()
         ->and($punya('petugas_tu', 'pegawai.create'))->toBeTrue()
         ->and($punya('petugas_tu', 'berita.create'))->toBeTrue()
-        ->and($punya('petugas_tu', 'kelas.update'))->toBeFalse()
+        ->and($punya('petugas_tu', 'kelas.update'))->toBeTrue()
+        ->and($punya('petugas_tu', 'tahun-ajaran.create'))->toBeTrue()
+        ->and($punya('petugas_tu', 'unit-sekolah.update'))->toBeFalse()
         ->and($punya('petugas_tu', 'pengguna.assign-role'))->toBeFalse();
 
     // Wali kelas, guru mapel, guru piket
-    expect($punya('wali_kelas', 'siswa.view'))->toBeTrue()
+    expect($punya('wali_kelas', 'siswa.view-kelas'))->toBeTrue()
+        ->and($punya('wali_kelas', 'siswa.view'))->toBeFalse()
         ->and($punya('wali_kelas', 'ppdb.view'))->toBeFalse()
         ->and($punya('guru_mapel', 'dashboard.view'))->toBeTrue()
         ->and($punya('guru_mapel', 'siswa.view'))->toBeFalse()

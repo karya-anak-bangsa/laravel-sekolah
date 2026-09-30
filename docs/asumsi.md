@@ -30,6 +30,18 @@ bila ada jawaban yayasan, perbarui di sini dan buat migration/kode baru bila per
   (akun tidak ada, password salah, tipe akun salah) memakai pesan yang sama.
 - Setelah login pendaftar berhasil, sementara diarahkan ke beranda; area pendaftar dibuat di Fase 3.
 
+## Master data Core (Fase 1A)
+- Disetujui 2026-10-01: petugas TU mengelola kelas dan tahun ajaran (`kelas.*`, `tahun-ajaran.*`); unit dan jurusan
+  hanya `super_admin`. Wali kelas memakai permission terpisah `siswa.view-kelas` (hanya kelas yang diampu).
+- Nama kelas harus unik per unit + tahun ajaran (kelas yang dihapus tidak dihitung). Tingkat SMP 7–9, SMK 10–12.
+- Jurusan wajib untuk kelas SMK dan dilarang untuk SMP; jurusan harus milik unit kelas itu.
+- Wali kelas harus pegawai berjenis guru pada unit yang sama. Belum ada aturan "satu guru hanya satu kelas per tahun".
+- Petugas TU tingkat unit hanya bisa membuat/melihat kelas di unitnya (scope + validasi unit).
+- Tahun ajaran baru selalu berstatus tidak aktif; pengaktifan lewat tombol "Aktifkan" (atomik, satu aktif).
+  Tahun ajaran aktif atau yang sudah punya kelas tidak bisa dihapus. Pergantian semester lewat ubah tahun ajaran.
+- Unit dengan jurusan/kelas/pegawai, dan jurusan yang dipakai kelas, tidak bisa dihapus.
+- Daftar memakai paginasi server-side (25 baris) dan filter lewat query string; DataTables client-side tidak dipakai.
+
 ## Data dasar (seeder)
 - Nama unit "SMP Puspita Bangsa" dan "SMK Puspita Bangsa" adalah asumsi (belum ada nama resmi).
 - Jurusan SMK: Pariwisata (`PAR`), Bisnis Manajemen (`BM`), Teknik Komputer dan Jaringan (`TKJ`),

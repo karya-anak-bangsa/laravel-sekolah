@@ -3,8 +3,10 @@
 namespace App\Modules\Core\Models;
 
 use App\Modules\Core\Enums\Semester;
+use App\Modules\Core\Policies\TahunAjaranPolicy;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Table;
+use Illuminate\Database\Eloquent\Attributes\UsePolicy;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -12,6 +14,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 #[Table('tb_tahun_ajaran', key: 'id_tahun_ajaran')]
 #[Fillable(['nama_tahun_ajaran', 'semester_aktif', 'is_aktif'])]
+#[UsePolicy(TahunAjaranPolicy::class)]
 class TahunAjaran extends Model
 {
     use SoftDeletes;
