@@ -5,12 +5,15 @@ namespace App\Modules\Core\Models;
 use App\Modules\Core\Models\Scopes\UnitSekolahScope;
 use App\Modules\Core\Policies\KelasPolicy;
 use App\Modules\Kepegawaian\Models\Pegawai;
+use App\Modules\Kesiswaan\Models\AnggotaKelas;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\ScopedBy;
 use Illuminate\Database\Eloquent\Attributes\Table;
 use Illuminate\Database\Eloquent\Attributes\UsePolicy;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 #[Table('tb_kelas', key: 'id_kelas')]
@@ -26,6 +29,23 @@ class Kelas extends Model
         return [
             'tingkat' => 'integer',
         ];
+    }
+
+    /** Kelas tahun ajaran aktif yang wali kelasnya adalah pegawai pemilik akun ini. */
+    public function scopeDiampuOleh(Builder $query, User $user): void
+    {
+        $query->where('id_pegawai_wali_kelas', $user->id_pegawai)
+            ->whereHas('tahunAjaran', fn ($t) => $t->aktif());
+    }
+
+    public function scopeDiTahunAktif(Builder $query): void
+    {
+        $query->whereHas('tahunAjaran', fn ($t) => $t->aktif());
+    }
+
+    public function anggotaKelas(): HasMany
+    {
+        return $this->hasMany(AnggotaKelas::class, 'id_kelas', 'id_kelas');
     }
 
     public function unitSekolah(): BelongsTo

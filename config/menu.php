@@ -5,7 +5,7 @@
  *   - route-nya terdaftar (modul yang belum dikerjakan otomatis tidak muncul), dan
  *   - (khusus admin) pengguna punya permission-nya. Otorisasi selalu berbasis permission, bukan nama role.
  *
- * Item admin : text, icon, route, permission, [active: pola routeIs() bila beda dari route]
+ * Item admin : text, icon, route, permission (string atau daftar = salah satu), [active: pola routeIs() bila beda dari route]
  * Item publik: text, route, [children]
  */
 return [
@@ -20,7 +20,7 @@ return [
             'label' => 'Master Data',
             'items' => [
                 ['text' => 'Pegawai', 'icon' => 'users', 'route' => 'admin.pegawai.index', 'permission' => 'pegawai.view', 'active' => 'admin.pegawai.*'],
-                ['text' => 'Siswa', 'icon' => 'profile', 'route' => 'admin.siswa.index', 'permission' => 'siswa.view', 'active' => 'admin.siswa.*'],
+                ['text' => 'Siswa', 'icon' => 'profile', 'route' => 'admin.siswa.index', 'permission' => ['siswa.view', 'siswa.view-kelas'], 'active' => 'admin.siswa.*'],
                 ['text' => 'Kelas', 'icon' => 'tables', 'route' => 'admin.kelas.index', 'permission' => 'kelas.view', 'active' => 'admin.kelas.*'],
                 ['text' => 'Tahun Ajaran', 'icon' => 'calendar', 'route' => 'admin.tahun-ajaran.index', 'permission' => 'tahun-ajaran.view', 'active' => 'admin.tahun-ajaran.*'],
                 ['text' => 'Unit & Jurusan', 'icon' => 'layout', 'route' => 'admin.unit-sekolah.index', 'permission' => 'unit-sekolah.view', 'active' => 'admin.unit-sekolah.*'],

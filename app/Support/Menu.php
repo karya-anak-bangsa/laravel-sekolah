@@ -27,7 +27,10 @@ class Menu
             $items = [];
 
             foreach ($group['items'] as $item) {
-                if (! Route::has($item['route']) || ! $user->can($item['permission'])) {
+                // 'permission' boleh berupa daftar: item tampil bila pengguna punya salah satunya.
+                $boleh = collect((array) $item['permission'])->contains(fn (string $izin) => $user->can($izin));
+
+                if (! Route::has($item['route']) || ! $boleh) {
                     continue;
                 }
 

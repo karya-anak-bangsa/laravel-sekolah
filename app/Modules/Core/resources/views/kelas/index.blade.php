@@ -55,6 +55,7 @@
                     <th>Tingkat</th>
                     <th>Tahun Ajaran</th>
                     <th>Wali Kelas</th>
+                    <th>Siswa</th>
                     <th style="text-align:right">Aksi</th>
                 </tr>
             </x-slot:head>
@@ -66,7 +67,11 @@
                     <td>{{ $item->tingkat }}</td>
                     <td>{{ $item->tahunAjaran->nama_tahun_ajaran }}</td>
                     <td>{{ $item->waliKelas?->nama_pegawai ?? '—' }}</td>
+                    <td>{{ $item->anggota_kelas_count }}</td>
                     <td style="text-align:right">
+                        @can('viewAnggota', $item)
+                            <a href="{{ route('admin.kelas.anggota', $item) }}" class="btn btn-outline btn-sm">Anggota</a>
+                        @endcan
                         @can('update', $item)
                             <a href="{{ route('admin.kelas.edit', $item) }}" class="btn btn-outline btn-sm">Ubah</a>
                         @endcan

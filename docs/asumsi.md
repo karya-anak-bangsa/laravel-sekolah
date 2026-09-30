@@ -60,6 +60,20 @@ bila ada jawaban yayasan, perbarui di sini dan buat migration/kode baru bila per
 - Kata sandi baru minimal 8 karakter, berisi huruf dan angka, serta berbeda dari yang lama.
 - Akun Super Administrator awal dari seeder juga wajib mengganti kata sandi saat login pertama.
 
+## Kesiswaan (Fase 1C)
+- Tabel mengikuti `docs/ppdb-formulir.md`. Kolom identitas siswa dan wali dibuat nullable (selain nama dan unit) agar
+  draf PPDB bisa disimpan; kelengkapan divalidasi di aplikasi. Form ubah data admin mewajibkan: nama, status,
+  jenis kelamin, tempat dan tanggal lahir, agama, kebutuhan khusus, serta nama ayah dan ibu (wali opsional).
+- NISN unik di antara siswa yang belum dihapus (kolom virtual `nisn_aktif`); siswa yang di-soft delete tidak menghalangi
+  NISN dipakai lagi. `tb_siswa_wali` memakai primary key gabungan (id_siswa, hubungan): satu ayah, satu ibu, satu wali.
+- Siswa baru hanya lewat PPDB; panel admin hanya menampilkan daftar, detail, dan mengubah data (tidak ada tombol tambah).
+- Data orang tua yang dipakai lebih dari satu siswa (kakak-adik) diubah di tempat, sehingga berlaku untuk semuanya.
+- Penempatan kelas: satu siswa hanya satu kelas per tahun ajaran (menempatkan ulang = memindahkan); kelas harus di unit
+  yang sama; hanya status calon/aktif yang dapat ditempatkan. Kelas yang masih punya siswa tidak bisa dihapus.
+  Penempatan tidak mengubah `status_siswa` (perubahan calon -> aktif adalah bagian penerimaan PPDB, Fase 3).
+- Wali kelas (`siswa.view-kelas`) hanya melihat siswa di kelas yang ia ampu pada tahun ajaran aktif, dan daftar anggota
+  kelas itu; hanya-lihat. Menu "Siswa" tampil bila pengguna punya `siswa.view` atau `siswa.view-kelas`.
+
 ## Data dasar (seeder)
 - Nama unit "SMP Puspita Bangsa" dan "SMK Puspita Bangsa" adalah asumsi (belum ada nama resmi).
 - Jurusan SMK: Pariwisata (`PAR`), Bisnis Manajemen (`BM`), Teknik Komputer dan Jaringan (`TKJ`),

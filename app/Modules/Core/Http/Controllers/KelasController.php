@@ -2,6 +2,7 @@
 
 namespace App\Modules\Core\Http\Controllers;
 
+use App\Modules\Core\Actions\HapusKelas;
 use App\Modules\Core\Http\Requests\KelasRequest;
 use App\Modules\Core\Models\Jurusan;
 use App\Modules\Core\Models\Kelas;
@@ -29,6 +30,7 @@ class KelasController
 
         $kelas = Kelas::query()
             ->with(['unitSekolah', 'jurusan', 'tahunAjaran', 'waliKelas'])
+            ->withCount('anggotaKelas')
             ->when($request->filled('id_unit_sekolah'), fn ($q) => $q->where('id_unit_sekolah', $request->input('id_unit_sekolah')))
             ->when(filled($idTahun), fn ($q) => $q->where('id_tahun_ajaran', $idTahun))
             ->when($request->filled('tingkat'), fn ($q) => $q->where('tingkat', $request->integer('tingkat')))
@@ -80,11 +82,11 @@ class KelasController
         return redirect()->route('admin.kelas.index')->with('status', 'Kelas berhasil diperbarui.');
     }
 
-    public function destroy(Kelas $kelas): RedirectResponse
+    public function destroy(Kelas $kelas, HapusKelas $hapus): RedirectResponse
     {
         Gate::authorize('delete', $kelas);
 
-        $kelas->delete();
+        $hapus($kelas);
 
         return redirect()->route('admin.kelas.index')->with('status', 'Kelas berhasil dihapus.');
     }
