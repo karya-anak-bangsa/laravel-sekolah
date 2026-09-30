@@ -1,0 +1,394 @@
+// main: ../main.scss
+/*--------------------------------------------------------------
+# Terms Of Service Section
+--------------------------------------------------------------*/
+.terms-of-service {
+
+  // Intro Banner
+  .terms-banner {
+    background-color: color-mix(in srgb, var(--accent-color), transparent 92%);
+    border-radius: 12px;
+    padding: 25px 30px;
+    margin-bottom: 50px;
+
+    .banner-text {
+      font-size: 1.05rem;
+      color: color-mix(in srgb, var(--default-color), transparent 15%);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    .revision-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      color: var(--accent-color);
+      font-weight: 500;
+
+      i {
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      text-align: center;
+
+      .revision-tag {
+        margin-top: 12px;
+      }
+    }
+  }
+
+  // Sidebar
+  .toc-wrapper {
+    position: sticky;
+    top: 100px;
+    background-color: var(--surface-color);
+    border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+    border-radius: 16px;
+    padding: 30px;
+
+    .toc-heading {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid color-mix(in srgb, var(--accent-color), transparent 70%);
+    }
+
+    .toc-nav {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 30px 0;
+
+      li {
+        margin-bottom: 4px;
+
+        a {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          padding: 10px 12px;
+          border-radius: 8px;
+          font-size: 0.9rem;
+          color: color-mix(in srgb, var(--default-color), transparent 25%);
+          text-decoration: none;
+          transition: all 0.3s;
+
+          .toc-num {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            min-width: 24px;
+          }
+
+          &:hover {
+            background-color: color-mix(in srgb, var(--accent-color), transparent 92%);
+            color: var(--accent-color);
+          }
+        }
+      }
+    }
+
+    .sidebar-contact {
+      background: linear-gradient(135deg, var(--accent-color) 0%, color-mix(in srgb, var(--accent-color), #000 20%) 100%);
+      border-radius: 12px;
+      padding: 25px;
+      text-align: center;
+      color: var(--contrast-color);
+
+      .contact-icon-wrap {
+        width: 50px;
+        height: 50px;
+        background-color: color-mix(in srgb, var(--contrast-color), transparent 80%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 15px;
+
+        i {
+          font-size: 1.4rem;
+          color: var(--contrast-color);
+        }
+      }
+
+      h6 {
+        font-size: 1.05rem;
+        color: var(--contrast-color);
+        margin-bottom: 8px;
+      }
+
+      p {
+        font-size: 0.85rem;
+        color: color-mix(in srgb, var(--contrast-color), transparent 20%);
+        margin-bottom: 15px;
+        line-height: 1.5;
+      }
+
+      .support-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 20px;
+        background-color: var(--contrast-color);
+        color: var(--accent-color);
+        border-radius: 25px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s;
+
+        &:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px color-mix(in srgb, #000, transparent 70%);
+        }
+      }
+    }
+
+    @media (max-width: 992px) {
+      position: static;
+      margin-bottom: 10px;
+    }
+  }
+
+  // Main Content
+  .terms-body {
+    .term-block {
+      background-color: var(--surface-color);
+      border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+      border-radius: 14px;
+      margin-bottom: 24px;
+      overflow: hidden;
+      transition: box-shadow 0.3s;
+
+      &:hover {
+        box-shadow: 0 8px 25px color-mix(in srgb, var(--default-color), transparent 88%);
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      .block-header {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 22px 28px;
+        border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 92%);
+        background-color: color-mix(in srgb, var(--accent-color), transparent 96%);
+
+        .block-num {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 40px;
+          height: 40px;
+          background-color: var(--accent-color);
+          color: var(--contrast-color);
+          border-radius: 10px;
+          font-size: 0.85rem;
+          font-weight: 700;
+          flex-shrink: 0;
+        }
+
+        h3 {
+          font-size: 1.3rem;
+          margin: 0;
+        }
+      }
+
+      .block-content {
+        padding: 24px 28px;
+
+        p {
+          color: color-mix(in srgb, var(--default-color), transparent 15%);
+          line-height: 1.75;
+          margin-bottom: 18px;
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+
+        // Info Callout
+        .callout-info {
+          display: flex;
+          align-items: flex-start;
+          gap: 14px;
+          padding: 18px 20px;
+          background-color: color-mix(in srgb, var(--accent-color), transparent 93%);
+          border-left: 3px solid var(--accent-color);
+          border-radius: 0 10px 10px 0;
+
+          .callout-icon {
+            flex-shrink: 0;
+
+            i {
+              font-size: 1.3rem;
+              color: var(--accent-color);
+            }
+          }
+
+          p {
+            margin: 0;
+            font-size: 0.92rem;
+            line-height: 1.6;
+          }
+        }
+
+        // Check List
+        .check-list {
+          list-style: none;
+          padding: 0;
+          margin: 10px 0 0 0;
+
+          li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 0;
+            border-bottom: 1px dashed color-mix(in srgb, var(--default-color), transparent 88%);
+            color: color-mix(in srgb, var(--default-color), transparent 15%);
+            font-size: 0.95rem;
+
+            &:last-child {
+              border-bottom: none;
+            }
+
+            i {
+              color: var(--accent-color);
+              font-size: 1.1rem;
+              flex-shrink: 0;
+            }
+          }
+        }
+
+        // Warning Callout
+        .callout-warning {
+          padding: 20px;
+          background-color: var(--surface-color);
+          border: 1px solid color-mix(in srgb, var(--accent-color), transparent 70%);
+          border-radius: 10px;
+
+          .callout-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 14px;
+            background-color: color-mix(in srgb, var(--accent-color), transparent 85%);
+            color: var(--accent-color);
+            border-radius: 20px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+
+            i {
+              font-size: 0.9rem;
+            }
+          }
+
+          p {
+            margin: 0;
+            font-size: 0.93rem;
+          }
+        }
+
+        // Restriction List
+        .restriction-list {
+          margin-top: 10px;
+
+          .restriction-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 16px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            transition: background-color 0.3s;
+
+            &:hover {
+              background-color: color-mix(in srgb, var(--default-color), transparent 96%);
+            }
+
+            &:last-child {
+              margin-bottom: 0;
+            }
+
+            .restriction-badge {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              width: 32px;
+              height: 32px;
+              background-color: color-mix(in srgb, #dc3545, transparent 90%);
+              border-radius: 50%;
+              flex-shrink: 0;
+
+              i {
+                font-size: 0.9rem;
+                color: #dc3545;
+              }
+            }
+
+            span:last-child {
+              font-size: 0.95rem;
+              color: color-mix(in srgb, var(--default-color), transparent 15%);
+            }
+          }
+        }
+
+        // Warranty Box
+        .warranty-box {
+          background-color: color-mix(in srgb, var(--default-color), transparent 96%);
+          border-radius: 10px;
+          padding: 22px 24px;
+
+          h6 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 14px;
+            color: var(--heading-color);
+          }
+
+          ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+
+            li {
+              position: relative;
+              padding-left: 20px;
+              margin-bottom: 10px;
+              font-size: 0.93rem;
+              color: color-mix(in srgb, var(--default-color), transparent 20%);
+
+              &:last-child {
+                margin-bottom: 0;
+              }
+
+              &::before {
+                content: '\2013';
+                position: absolute;
+                left: 0;
+                color: var(--accent-color);
+                font-weight: 700;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media print {
+    .toc-wrapper {
+      display: none;
+    }
+
+    .term-block {
+      page-break-inside: avoid;
+    }
+  }
+}

@@ -1,0 +1,556 @@
+// main: ../main.scss
+/*--------------------------------------------------------------
+# Students Life Section
+--------------------------------------------------------------*/
+.students-life {
+
+  // Shared Section Header
+  .section-header {
+    h3 {
+      font-size: 1.8rem;
+      margin-bottom: 0;
+    }
+
+    .label-tag {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--accent-color);
+      margin-bottom: 10px;
+      padding: 4px 14px;
+      background-color: color-mix(in srgb, var(--accent-color), transparent 90%);
+      border-radius: 20px;
+    }
+  }
+
+  // Intro Block
+  .intro-block {
+    .intro-image-wrap {
+      position: relative;
+
+      img {
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+      }
+
+      .experience-badge {
+        position: absolute;
+        bottom: -20px;
+        left: -20px;
+        background-color: var(--accent-color);
+        color: var(--contrast-color);
+        padding: 16px 24px;
+        border-radius: 12px;
+        text-align: center;
+        box-shadow: 0 8px 24px color-mix(in srgb, var(--accent-color), transparent 50%);
+
+        .number {
+          display: block;
+          font-size: 2rem;
+          font-weight: 700;
+          font-family: var(--heading-font);
+          line-height: 1;
+        }
+
+        .label {
+          font-size: 0.75rem;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          opacity: 0.9;
+        }
+      }
+    }
+
+    .intro-content {
+      padding: 20px 0;
+
+      .subtitle {
+        display: inline-block;
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: var(--accent-color);
+        margin-bottom: 12px;
+      }
+
+      h3 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+      }
+
+      p {
+        line-height: 1.8;
+        margin-bottom: 20px;
+      }
+
+      .intro-highlights {
+        margin-bottom: 25px;
+
+        .highlight-item {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          margin-bottom: 12px;
+
+          i {
+            color: var(--accent-color);
+            font-size: 1.1rem;
+            flex-shrink: 0;
+          }
+
+          span {
+            font-size: 0.95rem;
+          }
+        }
+      }
+
+      .explore-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 600;
+        font-size: 1rem;
+        color: var(--accent-color);
+        transition: all 0.3s ease;
+
+        i {
+          font-size: 1.2rem;
+          transition: transform 0.3s ease;
+        }
+
+        &:hover {
+          gap: 12px;
+
+          i {
+            transform: translateX(4px);
+          }
+        }
+      }
+    }
+
+    @media (max-width: 992px) {
+      .intro-image-wrap {
+        margin-bottom: 40px;
+
+        .experience-badge {
+          left: auto;
+          right: 20px;
+          bottom: -15px;
+        }
+      }
+    }
+  }
+
+  // Clubs Section
+  .clubs-section {
+    .club-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      padding: 24px;
+      background-color: var(--surface-color);
+      border-radius: 10px;
+      border-left: 4px solid var(--accent-color);
+      box-shadow: 0 4px 16px color-mix(in srgb, var(--default-color), transparent 92%);
+      height: 100%;
+      transition: all 0.3s ease;
+
+      &:hover {
+        transform: translateX(6px);
+        box-shadow: 0 6px 24px color-mix(in srgb, var(--default-color), transparent 86%);
+      }
+
+      .club-icon {
+        width: 56px;
+        height: 56px;
+        min-width: 56px;
+        background-color: color-mix(in srgb, var(--accent-color), transparent 88%);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+
+        i {
+          font-size: 26px;
+          color: var(--accent-color);
+          transition: all 0.3s ease;
+        }
+      }
+
+      &:hover .club-icon {
+        background-color: var(--accent-color);
+
+        i {
+          color: var(--contrast-color);
+        }
+      }
+
+      .club-content {
+        h5 {
+          font-size: 1.1rem;
+          margin-bottom: 10px;
+          color: var(--heading-color);
+        }
+
+        p {
+          font-size: 0.9rem;
+          margin-bottom: 12px;
+          line-height: 1.6;
+        }
+
+        .club-count {
+          font-size: 0.75rem;
+          font-weight: 600;
+          color: var(--accent-color);
+          background-color: color-mix(in srgb, var(--accent-color), transparent 90%);
+          padding: 4px 12px;
+          border-radius: 20px;
+        }
+      }
+    }
+
+    @media (max-width: 576px) {
+      .club-card {
+        flex-direction: column;
+        gap: 14px;
+      }
+    }
+  }
+
+  // Sports Section
+  .sports-section {
+    .swiper-wrapper {
+      height: auto !important;
+    }
+
+    .sport-card {
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+
+      img {
+        width: 100%;
+        aspect-ratio: 3 / 4;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .sport-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, color-mix(in srgb, var(--default-color), transparent 10%) 0%, transparent 60%);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 24px;
+        color: var(--contrast-color);
+
+        h5 {
+          color: var(--contrast-color);
+          font-size: 1.2rem;
+          margin-bottom: 8px;
+        }
+
+        p {
+          font-size: 0.85rem;
+          margin-bottom: 0;
+          opacity: 0.85;
+          line-height: 1.5;
+        }
+      }
+
+      &:hover img {
+        transform: scale(1.08);
+      }
+    }
+
+    .swiper-slide {
+      padding-bottom: 50px;
+    }
+
+    .swiper-pagination {
+      .swiper-pagination-bullet {
+        width: 24px;
+        height: 4px;
+        border-radius: 2px;
+        background-color: color-mix(in srgb, var(--accent-color), transparent 60%);
+        opacity: 1;
+        transition: all 0.3s ease;
+
+        &-active {
+          width: 36px;
+          background-color: var(--accent-color);
+        }
+      }
+    }
+  }
+
+  // Facilities Section
+  .facilities-section {
+    .facility-item {
+      background-color: var(--surface-color);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px color-mix(in srgb, var(--default-color), transparent 92%);
+      height: 100%;
+      transition: all 0.3s ease;
+
+      &:hover {
+        box-shadow: 0 8px 28px color-mix(in srgb, var(--default-color), transparent 86%);
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        min-height: 160px;
+        object-fit: cover;
+      }
+
+      .facility-details {
+        padding: 20px;
+
+        h5 {
+          font-size: 1.05rem;
+          color: var(--heading-color);
+          margin-bottom: 8px;
+        }
+
+        p {
+          font-size: 0.88rem;
+          margin-bottom: 0;
+          line-height: 1.6;
+        }
+      }
+    }
+  }
+
+  // Resources Section
+  .resources-section {
+    .resource-card {
+      position: relative;
+      padding: 32px 28px;
+      background-color: var(--surface-color);
+      border-radius: 12px;
+      box-shadow: 0 4px 16px color-mix(in srgb, var(--default-color), transparent 92%);
+      height: 100%;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      border-bottom: 3px solid transparent;
+
+      &:hover {
+        border-bottom-color: var(--accent-color);
+        box-shadow: 0 8px 28px color-mix(in srgb, var(--default-color), transparent 86%);
+      }
+
+      .resource-number {
+        position: absolute;
+        top: -10px;
+        right: 12px;
+        font-size: 5rem;
+        font-weight: 800;
+        font-family: var(--heading-font);
+        color: color-mix(in srgb, var(--default-color), transparent 93%);
+        line-height: 1;
+        pointer-events: none;
+      }
+
+      .resource-icon {
+        width: 52px;
+        height: 52px;
+        background-color: color-mix(in srgb, var(--accent-color), transparent 85%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+        position: relative;
+        z-index: 1;
+
+        i {
+          font-size: 24px;
+          color: var(--accent-color);
+        }
+      }
+
+      h5 {
+        font-size: 1.15rem;
+        margin-bottom: 12px;
+        color: var(--heading-color);
+        position: relative;
+        z-index: 1;
+      }
+
+      p {
+        font-size: 0.9rem;
+        margin-bottom: 16px;
+        line-height: 1.7;
+        position: relative;
+        z-index: 1;
+      }
+
+      .resource-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        font-weight: 500;
+        font-size: 0.88rem;
+        color: var(--accent-color);
+        position: relative;
+        z-index: 1;
+        transition: all 0.3s ease;
+
+        i {
+          font-size: 0.75rem;
+          transition: transform 0.3s ease;
+        }
+
+        &:hover i {
+          transform: translateX(4px);
+        }
+      }
+    }
+  }
+
+  // Moments Gallery
+  .moments-gallery {
+    .moment-item {
+      display: block;
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+
+      img {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+        transition: all 0.5s ease;
+      }
+
+      .moment-overlay {
+        position: absolute;
+        inset: 0;
+        background-color: color-mix(in srgb, var(--default-color), transparent 50%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: all 0.4s ease;
+
+        i {
+          color: var(--contrast-color);
+          font-size: 1.6rem;
+          transform: rotate(-45deg) scale(0.5);
+          transition: all 0.4s ease;
+        }
+      }
+
+      &:hover {
+        img {
+          transform: scale(1.06);
+        }
+
+        .moment-overlay {
+          opacity: 1;
+
+          i {
+            transform: rotate(0deg) scale(1);
+          }
+        }
+      }
+    }
+  }
+
+  // Action Banner
+  .action-banner {
+    background: linear-gradient(135deg, var(--accent-color) 0%, color-mix(in srgb, var(--accent-color), black 25%) 100%);
+    padding: 50px 40px;
+    border-radius: 16px;
+    color: var(--contrast-color);
+
+    h3 {
+      color: var(--contrast-color);
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+    }
+
+    p {
+      opacity: 0.9;
+      margin-bottom: 0;
+      font-size: 1.05rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .action-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-action {
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+
+      &.primary {
+        background-color: var(--contrast-color);
+        color: var(--accent-color);
+
+        &:hover {
+          background-color: color-mix(in srgb, var(--contrast-color), transparent 10%);
+          transform: translateY(-2px);
+        }
+      }
+
+      &.secondary {
+        border: 2px solid var(--contrast-color);
+        color: var(--contrast-color);
+
+        &:hover {
+          background-color: var(--contrast-color);
+          color: var(--accent-color);
+          transform: translateY(-2px);
+        }
+      }
+    }
+
+    @media (max-width: 768px) {
+      padding: 35px 25px;
+
+      h3 {
+        font-size: 1.5rem;
+      }
+
+      .action-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .btn-action {
+        width: 100%;
+        max-width: 280px;
+        text-align: center;
+      }
+    }
+  }
+
+  // Global Responsive
+  @media (max-width: 576px) {
+    .section-header h3 {
+      font-size: 1.5rem;
+    }
+
+    .intro-block .intro-content h3 {
+      font-size: 1.6rem;
+    }
+  }
+}

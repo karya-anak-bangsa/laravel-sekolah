@@ -1,0 +1,441 @@
+// main: ../main.scss
+/*--------------------------------------------------------------
+# Events Section
+--------------------------------------------------------------*/
+.events {
+  .category-tabs {
+    margin-bottom: 2.5rem;
+    border-bottom: 2px solid color-mix(in srgb, var(--default-color), transparent 88%);
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .tab-link {
+      background: none;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: color-mix(in srgb, var(--default-color), transparent 40%);
+      border-bottom: 3px solid transparent;
+      margin-bottom: -2px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      font-family: var(--heading-font);
+
+      &:hover {
+        color: var(--accent-color);
+      }
+
+      &.active {
+        color: var(--accent-color);
+        border-bottom-color: var(--accent-color);
+      }
+    }
+  }
+
+  .tag {
+    padding: 0.25rem 0.65rem;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: inline-block;
+
+    &.lecture {
+      background-color: color-mix(in srgb, #1565c0, transparent 85%);
+      color: #1565c0;
+    }
+
+    &.athletic {
+      background-color: color-mix(in srgb, #2e7d32, transparent 85%);
+      color: #2e7d32;
+    }
+
+    &.cultural {
+      background-color: color-mix(in srgb, #c62828, transparent 85%);
+      color: #c62828;
+    }
+
+    &.outreach {
+      background-color: color-mix(in srgb, #e65100, transparent 85%);
+      color: #e65100;
+    }
+  }
+
+  .featured-event {
+    background-color: var(--surface-color);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px color-mix(in srgb, var(--default-color), transparent 92%);
+    margin-bottom: 2.5rem;
+    border-left: 5px solid var(--accent-color);
+
+    .featured-image {
+      position: relative;
+      height: 100%;
+      min-height: 320px;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .featured-label {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        background-color: var(--accent-color);
+        color: var(--contrast-color);
+        padding: 0.4rem 1rem;
+        border-radius: 6px;
+        font-size: 0.8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+
+        i {
+          margin-right: 0.3rem;
+        }
+      }
+    }
+
+    .featured-content {
+      padding: 2rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+
+      .event-meta {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1rem;
+
+        .event-datetime {
+          font-size: 0.85rem;
+          color: color-mix(in srgb, var(--default-color), transparent 35%);
+
+          i {
+            margin-right: 0.3rem;
+            color: var(--accent-color);
+          }
+        }
+      }
+
+      .date-block {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: color-mix(in srgb, var(--accent-color), transparent 90%);
+        padding: 0.6rem 1rem;
+        border-radius: 8px;
+        margin-bottom: 1.25rem;
+        align-self: flex-start;
+
+        .month {
+          font-size: 0.7rem;
+          font-weight: 700;
+          text-transform: uppercase;
+          color: var(--accent-color);
+          letter-spacing: 1px;
+        }
+
+        .day {
+          font-size: 1.6rem;
+          font-weight: 800;
+          color: var(--accent-color);
+          line-height: 1;
+        }
+      }
+
+      h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 0.75rem;
+        color: var(--heading-color);
+        line-height: 1.3;
+      }
+
+      p {
+        color: color-mix(in srgb, var(--default-color), transparent 25%);
+        font-size: 0.95rem;
+        line-height: 1.7;
+        margin-bottom: 1.25rem;
+      }
+
+      .event-details-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+        font-size: 0.85rem;
+        color: color-mix(in srgb, var(--default-color), transparent 30%);
+
+        i {
+          color: var(--accent-color);
+          margin-right: 0.4rem;
+        }
+      }
+
+      .enroll-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background-color: var(--accent-color);
+        color: var(--contrast-color);
+        padding: 0.7rem 1.8rem;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+        align-self: flex-start;
+
+        &:hover {
+          background-color: color-mix(in srgb, var(--accent-color), #000 15%);
+          color: var(--contrast-color);
+          transform: translateX(5px);
+        }
+      }
+    }
+
+    @media (max-width: 992px) {
+      .featured-image {
+        min-height: 260px;
+      }
+
+      .featured-content {
+        padding: 1.75rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .featured-image {
+        min-height: 220px;
+      }
+
+      .featured-content {
+        padding: 1.5rem;
+
+        h3 {
+          font-size: 1.25rem;
+        }
+
+        .event-details-row {
+          flex-direction: column;
+          gap: 0.5rem;
+        }
+      }
+    }
+  }
+
+  .event-list {
+    margin-bottom: 2.5rem;
+
+    .event-card {
+      background-color: var(--surface-color);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px color-mix(in srgb, var(--default-color), transparent 93%);
+      transition: all 0.3s ease;
+      height: 100%;
+      border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+
+      &:hover {
+        box-shadow: 0 6px 20px color-mix(in srgb, var(--default-color), transparent 87%);
+        border-color: color-mix(in srgb, var(--accent-color), transparent 60%);
+      }
+
+      .date-sidebar {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: color-mix(in srgb, var(--accent-color), transparent 88%);
+        padding: 1rem 1.2rem;
+        height: 100%;
+        min-width: 72px;
+
+        .month {
+          font-size: 0.7rem;
+          font-weight: 700;
+          text-transform: uppercase;
+          color: var(--accent-color);
+          letter-spacing: 1px;
+        }
+
+        .day {
+          font-size: 1.5rem;
+          font-weight: 800;
+          color: var(--accent-color);
+          line-height: 1;
+        }
+      }
+
+      .card-thumb {
+        width: 130px;
+        height: 100%;
+        overflow: hidden;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+          transition: transform 0.3s ease;
+        }
+      }
+
+      &:hover .card-thumb img {
+        transform: scale(1.08);
+      }
+
+      .card-content {
+        padding: 1.1rem 1.25rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .card-meta {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+          margin-bottom: 0.5rem;
+
+          .time {
+            font-size: 0.8rem;
+            color: color-mix(in srgb, var(--default-color), transparent 40%);
+
+            i {
+              margin-right: 0.25rem;
+              color: var(--accent-color);
+            }
+          }
+        }
+
+        h4 {
+          font-size: 1.05rem;
+          font-weight: 700;
+          margin-bottom: 0.5rem;
+          color: var(--heading-color);
+          line-height: 1.3;
+        }
+
+        .card-info {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 1rem;
+          margin-bottom: 0.6rem;
+          font-size: 0.8rem;
+          color: color-mix(in srgb, var(--default-color), transparent 35%);
+
+          i {
+            color: var(--accent-color);
+            margin-right: 0.3rem;
+          }
+        }
+
+        .enroll-link {
+          font-size: 0.85rem;
+          font-weight: 600;
+          color: var(--accent-color);
+          display: inline-flex;
+          align-items: center;
+          gap: 0.3rem;
+          transition: all 0.3s ease;
+
+          i {
+            font-size: 0.75rem;
+            transition: transform 0.3s ease;
+          }
+
+          &:hover {
+            color: color-mix(in srgb, var(--accent-color), #000 15%);
+
+            i {
+              transform: translateX(4px);
+            }
+          }
+        }
+      }
+
+      @media (max-width: 768px) {
+        .card-thumb {
+          width: 100px;
+        }
+
+        .date-sidebar {
+          min-width: 58px;
+          padding: 0.75rem;
+        }
+
+        .card-content {
+          padding: 0.9rem 1rem;
+
+          .card-info {
+            flex-direction: column;
+            gap: 0.3rem;
+          }
+        }
+      }
+
+      @media (max-width: 576px) {
+        .card-thumb {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .calendar-link-wrapper {
+    padding-top: 1rem;
+
+    .calendar-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.8rem 2rem;
+      border: 2px solid color-mix(in srgb, var(--default-color), transparent 80%);
+      border-radius: 8px;
+      color: var(--default-color);
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+
+      i {
+        font-size: 1.15rem;
+        color: var(--accent-color);
+        transition: color 0.3s ease;
+      }
+
+      &:hover {
+        border-color: var(--accent-color);
+        background-color: var(--accent-color);
+        color: var(--contrast-color);
+
+        i {
+          color: var(--contrast-color);
+        }
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .category-tabs {
+      .tab-link {
+        padding: 0.6rem 1rem;
+        font-size: 0.85rem;
+      }
+    }
+  }
+}

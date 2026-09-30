@@ -1,0 +1,94 @@
+/*--------------------------------------------------------------
+# Global Sections
+--------------------------------------------------------------*/
+section,
+.section {
+  color: var(--default-color);
+  background-color: var(--background-color);
+  padding: 60px 0;
+  scroll-margin-top: 90px;
+  overflow: clip;
+}
+
+@media (max-width: 1199px) {
+
+  section,
+  .section {
+    scroll-margin-top: 66px;
+  }
+}
+
+/*--------------------------------------------------------------
+# Global Section Titles
+--------------------------------------------------------------*/
+.section-title {
+  text-align: center;
+  padding-bottom: 60px;
+  position: relative;
+
+  h2 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    position: relative;
+
+    &:before {
+      content: '';
+      position: absolute;
+      display: block;
+      width: 160px;
+      height: 1px;
+      background: color-mix(in srgb, var(--default-color), transparent 60%);
+      left: 0;
+      right: 0;
+      bottom: 1px;
+      margin: auto;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: var(--accent-color);
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+    }
+  }
+
+  p {
+    margin-bottom: 0;
+  }
+}
+
+@import './sections/_hero.scss';
+@import './sections/_about.scss';
+@import './sections/_featured-programs.scss';
+@import './sections/_students-life-block.scss';
+@import './sections/_testimonials.scss';
+@import './sections/_stats.scss';
+@import './sections/_recent-news.scss';
+@import './sections/_events.scss';
+@import './sections/_history.scss';
+@import './sections/_leadership.scss';
+@import './sections/_admissions.scss';
+@import './sections/_academics.scss';
+@import './sections/_students-life.scss';
+@import './sections/_faculty--staff.scss';
+@import './sections/_campus-facilities.scss';
+@import './sections/_news-hero.scss';
+@import './sections/_news-posts.scss';
+@import './sections/_pagination-2.scss';
+@import './sections/_blog-details.scss';
+@import './sections/_events-extended.scss';
+@import './sections/_event.scss';
+@import './sections/_alumni.scss';
+@import './sections/_contact.scss';
+@import './sections/_privacy.scss';
+@import './sections/_terms-of-service.scss';
+@import './sections/_error-404.scss';
+@import './sections/_starter-section.scss';

@@ -1,0 +1,447 @@
+// main: ../main.scss
+/*--------------------------------------------------------------
+# Admissions Section
+--------------------------------------------------------------*/
+.admissions {
+  .panel-heading {
+    font-size: 1.5rem;
+    color: var(--heading-color);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    i {
+      color: var(--accent-color);
+      font-size: 1.3rem;
+    }
+  }
+
+  // Deadlines Timeline Banner
+  .timeline-banner {
+    background-color: color-mix(in srgb, var(--accent-color), transparent 92%);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid color-mix(in srgb, var(--accent-color), transparent 80%);
+
+    .timeline-block {
+      padding: 1.8rem 1.5rem;
+      text-align: center;
+      position: relative;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: color-mix(in srgb, var(--accent-color), transparent 85%);
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 20%;
+        height: 60%;
+        width: 1px;
+        background-color: color-mix(in srgb, var(--accent-color), transparent 70%);
+
+        @media (max-width: 768px) {
+          display: none;
+        }
+      }
+
+      .timeline-date {
+        display: inline-block;
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: var(--contrast-color);
+        background-color: var(--accent-color);
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        margin-bottom: 0.75rem;
+      }
+
+      h4 {
+        font-size: 1.05rem;
+        margin-bottom: 0.4rem;
+      }
+
+      p {
+        font-size: 0.85rem;
+        margin-bottom: 0;
+        color: color-mix(in srgb, var(--default-color), transparent 30%);
+      }
+    }
+
+    .row>div:last-child .timeline-block::after {
+      display: none;
+    }
+  }
+
+  // Application Process Cards
+  .process-card {
+    background-color: var(--surface-color);
+    border: 1px solid color-mix(in srgb, var(--default-color), transparent 88%);
+    border-top: 4px solid var(--accent-color);
+    border-radius: 0 0 10px 10px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    height: 100%;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px color-mix(in srgb, var(--default-color), transparent 88%);
+    }
+
+    .process-icon {
+      position: relative;
+      margin-bottom: 1.2rem;
+
+      i {
+        font-size: 2.5rem;
+        color: var(--accent-color);
+      }
+
+      .process-step {
+        display: block;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: color-mix(in srgb, var(--accent-color), transparent 20%);
+        margin-top: 0.5rem;
+      }
+    }
+
+    h4 {
+      font-size: 1.1rem;
+      margin-bottom: 0.6rem;
+    }
+
+    p {
+      font-size: 0.9rem;
+      margin-bottom: 0;
+      color: color-mix(in srgb, var(--default-color), transparent 25%);
+    }
+  }
+
+  // Checklist Panel
+  .checklist-panel {
+    background-color: var(--surface-color);
+    border-radius: 12px;
+    padding: 2rem;
+    height: 100%;
+    border-left: 5px solid var(--accent-color);
+    box-shadow: 0 4px 20px color-mix(in srgb, var(--default-color), transparent 92%);
+
+    .checklist-items {
+      margin-bottom: 1.5rem;
+    }
+
+    .checklist-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px dashed color-mix(in srgb, var(--default-color), transparent 85%);
+      transition: padding-left 0.3s ease;
+
+      &:hover {
+        padding-left: 0.5rem;
+      }
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      .item-number {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background-color: color-mix(in srgb, var(--accent-color), transparent 85%);
+        color: var(--accent-color);
+        font-size: 0.8rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      span:last-child {
+        font-size: 0.95rem;
+      }
+    }
+
+    .intl-notice {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 1rem;
+      background-color: color-mix(in srgb, var(--accent-color), transparent 90%);
+      border-radius: 8px;
+
+      i {
+        color: var(--accent-color);
+        font-size: 1.3rem;
+        flex-shrink: 0;
+        margin-top: 2px;
+      }
+
+      p {
+        margin-bottom: 0;
+        font-size: 0.88rem;
+      }
+    }
+  }
+
+  // Tuition Panel
+  .tuition-panel {
+    height: 100%;
+
+    .fee-card {
+      background-color: var(--surface-color);
+      border: 1px solid color-mix(in srgb, var(--default-color), transparent 88%);
+      border-radius: 10px;
+      padding: 1.5rem;
+      text-align: center;
+      transition: all 0.3s ease;
+
+      &:hover {
+        border-color: var(--accent-color);
+        box-shadow: 0 8px 20px color-mix(in srgb, var(--accent-color), transparent 85%);
+      }
+
+      .fee-label {
+        display: block;
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: color-mix(in srgb, var(--default-color), transparent 30%);
+        margin-bottom: 0.5rem;
+      }
+
+      .fee-amount {
+        font-size: 1.8rem;
+        font-weight: 700;
+        font-family: var(--heading-font);
+        color: var(--heading-color);
+        margin-bottom: 0.3rem;
+      }
+
+      .fee-detail {
+        font-size: 0.8rem;
+        color: color-mix(in srgb, var(--default-color), transparent 40%);
+      }
+    }
+
+    .aid-banner {
+      background-color: var(--accent-color);
+      border-radius: 10px;
+      padding: 1.5rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      margin-top: 1rem;
+
+      @media (max-width: 768px) {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .aid-content {
+        h4 {
+          font-size: 1.1rem;
+          color: var(--contrast-color);
+          margin-bottom: 0.3rem;
+        }
+
+        p {
+          margin-bottom: 0;
+          font-size: 0.9rem;
+          color: color-mix(in srgb, var(--contrast-color), transparent 15%);
+        }
+      }
+
+      .btn-funding {
+        background-color: var(--contrast-color);
+        color: var(--accent-color);
+        padding: 0.6rem 1.2rem;
+        border-radius: 6px;
+        font-weight: 600;
+        font-size: 0.88rem;
+        white-space: nowrap;
+        transition: all 0.3s ease;
+
+        &:hover {
+          background-color: color-mix(in srgb, var(--contrast-color), transparent 10%);
+          transform: translateY(-2px);
+        }
+      }
+    }
+  }
+
+  // Campus Tour Info
+  .tour-info {
+    h3 {
+      font-size: 1.8rem;
+      color: var(--heading-color);
+      margin-bottom: 1rem;
+    }
+
+    >p {
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+      color: color-mix(in srgb, var(--default-color), transparent 15%);
+    }
+
+    .tour-highlights {
+      margin-bottom: 1.5rem;
+
+      .highlight-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.6rem;
+        padding: 0.6rem 0;
+
+        i {
+          color: var(--accent-color);
+          font-size: 1.1rem;
+          flex-shrink: 0;
+          margin-top: 2px;
+        }
+
+        span {
+          font-size: 0.92rem;
+        }
+      }
+    }
+
+    .tour-actions {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+
+      .btn-book-tour {
+        background-color: var(--accent-color);
+        color: var(--contrast-color);
+        padding: 0.75rem 2rem;
+        border-radius: 50px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+
+        &:hover {
+          background-color: color-mix(in srgb, var(--accent-color), var(--default-color) 15%);
+          transform: translateY(-3px);
+          box-shadow: 0 6px 20px color-mix(in srgb, var(--accent-color), transparent 50%);
+        }
+      }
+
+      .remote-tour-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        color: var(--accent-color);
+        font-weight: 500;
+        font-size: 0.95rem;
+
+        i {
+          font-size: 1.2rem;
+          transition: transform 0.3s ease;
+        }
+
+        &:hover i {
+          transform: scale(1.2);
+        }
+      }
+    }
+  }
+
+  .tour-visual {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+
+    img {
+      border-radius: 16px;
+      width: 100%;
+    }
+
+    .visual-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1.2rem;
+      background: linear-gradient(to top, color-mix(in srgb, var(--default-color), transparent 20%), transparent);
+      text-align: center;
+
+      span {
+        color: var(--contrast-color);
+        font-size: 0.9rem;
+        font-style: italic;
+      }
+    }
+  }
+
+  // Inquiry Form Wrapper
+  .inquiry-form-wrapper {
+    background-color: var(--surface-color);
+    border-radius: 16px;
+    padding: 2.5rem;
+    box-shadow: 0 8px 35px color-mix(in srgb, var(--default-color), transparent 90%);
+
+    @media (max-width: 576px) {
+      padding: 1.5rem;
+    }
+
+    .form-title {
+      font-size: 1.6rem;
+      color: var(--heading-color);
+      margin-bottom: 0.5rem;
+    }
+
+    .form-subtitle {
+      font-size: 0.95rem;
+      color: color-mix(in srgb, var(--default-color), transparent 30%);
+      margin-bottom: 2rem;
+    }
+
+    .form-control,
+    .form-select {
+      padding: 0.75rem 1.2rem;
+      color: var(--default-color);
+      background-color: color-mix(in srgb, var(--background-color), var(--default-color) 3%);
+      font-size: 14px;
+      border: 1px solid color-mix(in srgb, var(--default-color), transparent 85%);
+      border-radius: 8px;
+
+      &:focus {
+        box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-color), transparent 75%);
+        border-color: var(--accent-color);
+        background-color: var(--surface-color);
+      }
+
+      &::placeholder {
+        color: color-mix(in srgb, var(--default-color), transparent 70%);
+      }
+    }
+
+    .btn-submit-inquiry {
+      background-color: var(--accent-color);
+      color: var(--contrast-color);
+      padding: 0.75rem 3rem;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background-color: color-mix(in srgb, var(--accent-color), var(--default-color) 15%);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 18px color-mix(in srgb, var(--accent-color), transparent 50%);
+      }
+    }
+  }
+}

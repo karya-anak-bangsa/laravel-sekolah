@@ -1,0 +1,661 @@
+// main: ../main.scss
+/*--------------------------------------------------------------
+# Campus Facilities Section
+--------------------------------------------------------------*/
+.campus-facilities {
+
+  // Campus Overview Banner
+  .campus-banner {
+    margin-bottom: 4rem;
+    padding: 2.5rem;
+    background: var(--surface-color);
+    border-radius: 14px;
+    border-left: 5px solid var(--accent-color);
+    box-shadow: 0 4px 24px color-mix(in srgb, var(--default-color), transparent 92%);
+
+    .banner-image {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      height: 100%;
+
+      img {
+        width: 100%;
+        height: 100%;
+        min-height: 340px;
+        object-fit: cover;
+        border-radius: 10px;
+      }
+
+      .accent-badge {
+        position: absolute;
+        top: 16px;
+        left: 16px;
+        background: color-mix(in srgb, var(--accent-color), transparent 10%);
+        color: var(--contrast-color);
+        padding: 10px 18px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        backdrop-filter: blur(10px);
+        font-weight: 600;
+        font-size: 0.88rem;
+
+        i {
+          font-size: 1.1rem;
+        }
+      }
+    }
+
+    .banner-text {
+      padding: 2rem 1rem;
+
+      .tag-label {
+        display: inline-block;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 0.78rem;
+        font-weight: 700;
+        color: var(--accent-color);
+        margin-bottom: 1.2rem;
+        border-bottom: 2px solid var(--accent-color);
+        padding-bottom: 4px;
+      }
+
+      h1 {
+        font-size: 2.6rem;
+        font-weight: 800;
+        line-height: 1.15;
+        margin-bottom: 1.5rem;
+
+        @media (max-width: 768px) {
+          font-size: 1.9rem;
+        }
+      }
+
+      p {
+        font-size: 1.08rem;
+        color: color-mix(in srgb, var(--default-color), transparent 25%);
+        line-height: 1.7;
+      }
+    }
+
+    .stats-row {
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+
+      .stat-pill {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem;
+        background: color-mix(in srgb, var(--accent-color), transparent 93%);
+        border-radius: 10px;
+        transition: all 0.3s ease;
+
+        &:hover {
+          background: color-mix(in srgb, var(--accent-color), transparent 85%);
+          transform: translateY(-3px);
+        }
+
+        i {
+          font-size: 1.6rem;
+          color: var(--accent-color);
+          width: 52px;
+          height: 52px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: var(--surface-color);
+          border-radius: 10px;
+          box-shadow: 0 2px 8px color-mix(in srgb, var(--default-color), transparent 90%);
+        }
+
+        .stat-info {
+          .stat-number {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--heading-color);
+            line-height: 1;
+            font-family: var(--heading-font);
+          }
+
+          .stat-label {
+            font-size: 0.82rem;
+            color: color-mix(in srgb, var(--default-color), transparent 40%);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+          }
+        }
+      }
+    }
+  }
+
+  // Facilities Zigzag Showcase
+  .facilities-showcase {
+    margin-bottom: 4rem;
+
+    .showcase-image {
+      border-radius: 14px;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: 380px;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+        border-radius: 14px;
+      }
+
+      &:hover img {
+        transform: scale(1.03);
+      }
+    }
+
+    .showcase-content {
+      padding: 1rem 0;
+
+      .icon-box {
+        width: 58px;
+        height: 58px;
+        background: var(--accent-color);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+
+        i {
+          font-size: 1.5rem;
+          color: var(--contrast-color);
+        }
+      }
+
+      h3 {
+        font-size: 1.7rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+      }
+
+      >p {
+        font-size: 1.02rem;
+        color: color-mix(in srgb, var(--default-color), transparent 25%);
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+      }
+
+      .feature-list {
+        list-style: none;
+        padding: 0;
+        margin-bottom: 2rem;
+
+        li {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          padding: 9px 0;
+          font-size: 0.95rem;
+          color: color-mix(in srgb, var(--default-color), transparent 10%);
+          border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 92%);
+
+          &:last-child {
+            border-bottom: none;
+          }
+
+          i {
+            color: var(--accent-color);
+            font-size: 1rem;
+          }
+        }
+      }
+
+      .discover-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 600;
+        color: var(--accent-color);
+        transition: all 0.3s ease;
+        border-bottom: 2px solid transparent;
+        padding-bottom: 2px;
+
+        &:hover {
+          border-bottom-color: var(--accent-color);
+
+          i {
+            transform: translateX(5px);
+          }
+        }
+
+        i {
+          transition: transform 0.3s ease;
+        }
+      }
+    }
+  }
+
+  // Virtual Tour Block
+  .virtual-tour-block {
+    position: relative;
+    border-radius: 18px;
+    overflow: hidden;
+    margin-bottom: 4rem;
+    padding: 5rem 0;
+
+    .tour-video-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+
+      video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .tour-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: color-mix(in srgb, var(--default-color), transparent 25%);
+      z-index: 1;
+    }
+
+    .tour-inner {
+      position: relative;
+      z-index: 2;
+    }
+
+    .tour-info {
+      color: var(--contrast-color);
+
+      h2 {
+        font-size: 2.6rem;
+        font-weight: 800;
+        color: var(--contrast-color);
+        margin-bottom: 1rem;
+
+        @media (max-width: 768px) {
+          font-size: 1.9rem;
+        }
+      }
+
+      >p {
+        font-size: 1.08rem;
+        color: color-mix(in srgb, var(--contrast-color), transparent 15%);
+        margin-bottom: 2.5rem;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .tour-perks {
+        margin-bottom: 2.5rem;
+
+        .perk-item {
+          text-align: center;
+          padding: 1.5rem;
+          background: color-mix(in srgb, var(--contrast-color), transparent 85%);
+          border-radius: 12px;
+          backdrop-filter: blur(10px);
+          transition: all 0.3s ease;
+
+          &:hover {
+            background: color-mix(in srgb, var(--contrast-color), transparent 75%);
+            transform: translateY(-5px);
+          }
+
+          i {
+            font-size: 2rem;
+            color: var(--contrast-color);
+            margin-bottom: 0.8rem;
+            display: block;
+          }
+
+          strong {
+            display: block;
+            font-size: 1.05rem;
+            color: var(--contrast-color);
+            margin-bottom: 0.3rem;
+          }
+
+          p {
+            margin: 0;
+            font-size: 0.88rem;
+            color: color-mix(in srgb, var(--contrast-color), transparent 20%);
+          }
+        }
+      }
+
+      .btn-tour-start {
+        background: var(--accent-color);
+        color: var(--contrast-color);
+        padding: 14px 32px;
+        border-radius: 8px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+
+        &:hover {
+          background: color-mix(in srgb, var(--accent-color), var(--contrast-color) 15%);
+          transform: translateY(-2px);
+          box-shadow: 0 10px 25px color-mix(in srgb, var(--default-color), transparent 60%);
+        }
+      }
+
+      .btn-tour-visit {
+        border: 2px solid var(--contrast-color);
+        color: var(--contrast-color);
+        padding: 12px 30px;
+        border-radius: 8px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+
+        &:hover {
+          background: var(--contrast-color);
+          color: var(--accent-color);
+          transform: translateY(-2px);
+        }
+      }
+    }
+  }
+
+  // Campus Highlights Carousel
+  .campus-highlights {
+    margin-bottom: 4rem;
+
+    .highlights-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      position: relative;
+      padding-left: 18px;
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        background: var(--accent-color);
+        border-radius: 2px;
+      }
+
+      @media (max-width: 768px) {
+        font-size: 1.8rem;
+      }
+    }
+
+    .highlights-desc {
+      font-size: 1rem;
+      color: color-mix(in srgb, var(--default-color), transparent 30%);
+      margin: 0;
+      max-width: 480px;
+
+      @media (min-width: 992px) {
+        margin-left: auto;
+        text-align: right;
+      }
+
+      @media (max-width: 992px) {
+        margin-top: 0.8rem;
+      }
+    }
+
+    .highlights-slider {
+      .swiper-wrapper {
+        height: auto !important;
+      }
+
+      .location-card {
+        background: var(--surface-color);
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+        transition: all 0.3s ease;
+        height: 100%;
+
+        &:hover {
+          box-shadow: 0 12px 35px color-mix(in srgb, var(--default-color), transparent 85%);
+          transform: translateY(-6px);
+
+          .location-img img {
+            transform: scale(1.08);
+          }
+        }
+
+        .location-img {
+          position: relative;
+          overflow: hidden;
+
+          img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+          }
+
+          .location-tag {
+            position: absolute;
+            bottom: 12px;
+            left: 12px;
+            background: var(--accent-color);
+            color: var(--contrast-color);
+            padding: 5px 14px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+          }
+        }
+
+        .location-details {
+          padding: 1.25rem;
+
+          h4 {
+            font-weight: 700;
+            font-size: 1.12rem;
+            margin-bottom: 0.5rem;
+          }
+
+          p {
+            font-size: 0.88rem;
+            color: color-mix(in srgb, var(--default-color), transparent 25%);
+            margin-bottom: 1rem;
+            line-height: 1.55;
+          }
+
+          .location-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+
+            span {
+              font-size: 0.82rem;
+              color: color-mix(in srgb, var(--default-color), transparent 20%);
+              display: flex;
+              align-items: center;
+              gap: 5px;
+
+              i {
+                color: var(--accent-color);
+                font-size: 0.9rem;
+              }
+            }
+          }
+        }
+      }
+
+      .swiper-pagination {
+        margin-top: 2rem;
+        position: relative;
+
+        .swiper-pagination-bullet {
+          width: 28px;
+          height: 4px;
+          border-radius: 2px;
+          background: color-mix(in srgb, var(--accent-color), transparent 70%);
+          opacity: 1;
+          transition: all 0.3s ease;
+
+          &.swiper-pagination-bullet-active {
+            background: var(--accent-color);
+            width: 48px;
+          }
+        }
+      }
+    }
+  }
+
+  // Campus Navigation & Map
+  .campus-navigation {
+    .map-frame {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 8px 30px color-mix(in srgb, var(--default-color), transparent 88%);
+
+      iframe {
+        border: none;
+      }
+
+      .floating-panel {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 330px;
+        background: color-mix(in srgb, var(--surface-color), transparent 5%);
+        backdrop-filter: blur(14px);
+        border-radius: 12px;
+        padding: 1.6rem;
+        box-shadow: 0 10px 30px color-mix(in srgb, var(--default-color), transparent 80%);
+        max-height: calc(100% - 40px);
+        overflow-y: auto;
+
+        @media (max-width: 768px) {
+          position: relative;
+          top: 0;
+          right: 0;
+          width: 100%;
+          border-radius: 0 0 14px 14px;
+          max-height: none;
+        }
+
+        h3 {
+          font-weight: 700;
+          font-size: 1.25rem;
+          margin-bottom: 0.5rem;
+        }
+
+        >p {
+          font-size: 0.88rem;
+          color: color-mix(in srgb, var(--default-color), transparent 25%);
+          margin-bottom: 1.2rem;
+        }
+
+        .filter-chips {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 6px;
+          margin-bottom: 1.3rem;
+
+          .chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: 500;
+            cursor: pointer;
+            background: color-mix(in srgb, var(--default-color), transparent 92%);
+            color: color-mix(in srgb, var(--default-color), transparent 20%);
+            transition: all 0.3s ease;
+
+            &:hover,
+            &.active {
+              background: color-mix(in srgb, var(--accent-color), transparent 85%);
+              color: var(--accent-color);
+            }
+
+            i {
+              font-size: 0.82rem;
+            }
+          }
+        }
+
+        .panel-links {
+          margin-bottom: 1.3rem;
+
+          a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 0;
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: var(--accent-color);
+            transition: all 0.3s ease;
+            border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 92%);
+
+            &:last-child {
+              border-bottom: none;
+            }
+
+            &:hover {
+              padding-left: 8px;
+            }
+
+            i {
+              font-size: 0.95rem;
+            }
+          }
+        }
+
+        .campus-quick-info {
+          background: color-mix(in srgb, var(--accent-color), transparent 92%);
+          padding: 1rem;
+          border-radius: 10px;
+
+          h5 {
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 0.3rem;
+            color: var(--heading-color);
+          }
+
+          p {
+            font-size: 0.82rem;
+            color: color-mix(in srgb, var(--default-color), transparent 25%);
+            margin-bottom: 0.6rem;
+          }
+
+          .quick-details {
+            display: flex;
+            gap: 1rem;
+
+            span {
+              font-size: 0.78rem;
+              color: var(--accent-color);
+              display: flex;
+              align-items: center;
+              gap: 4px;
+
+              i {
+                font-size: 0.82rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
