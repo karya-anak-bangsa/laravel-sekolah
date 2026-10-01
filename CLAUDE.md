@@ -279,3 +279,6 @@ php artisan test
 - `docs/ppdb-formulir.md` — rincian field formulir PPDB dan pemetaannya ke tabel.
 - `docs/pertanyaan-klien.md` — jawaban yayasan dan pertanyaan yang masih terbuka.
 - `docs/asumsi.md` — asumsi saat data acuan belum ada (dibuat bila perlu).
+- `docs/erd.drawio` — ERD seluruh tabel (dibuka dengan draw.io). Diperbarui manual bila ada migration baru.
+- `docs/sql/index-admin.sql` — query SQL (DBeaver) yang setara dengan halaman index tiap menu `/admin`.
+  Diperbarui bila kolom/filter halaman index berubah.
