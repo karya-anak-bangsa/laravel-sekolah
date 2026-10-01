@@ -1,8 +1,8 @@
 <?php
 
 /*
- * Identitas yayasan untuk layout admin dan publik.
- * Sementara dari .env; dipindah ke tb_pengaturan saat modul Company Profile dikerjakan.
+ * Nilai bawaan identitas yayasan (dari .env). Yang dipakai layout adalah situs('kunci'): nilai dari
+ * tb_pengaturan (Pengaturan Situs di panel admin), dan memakai nilai di sini selama belum disimpan.
  */
 return [
     'nama' => env('SEKOLAH_NAMA', 'Yayasan Puspita Bangsa'),

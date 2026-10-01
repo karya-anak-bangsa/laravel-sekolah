@@ -83,6 +83,22 @@ bila ada jawaban yayasan, perbarui di sini dan buat migration/kode baru bila per
 - Kelas: SMP 7–9 × 4 rombel (VII-A…), SMK 10–12 × 4 jurusan × 2 rombel (mis. X RPL 1); 30–35 siswa per rombel;
   ±6% siswa dibuat sebagai adik yang berbagi orang tua.
 
+## Company Profile (Fase 2A)
+- Disetujui 2026-10-01: situs publik satu untuk seluruh yayasan (bagian SMP dan SMK di dalamnya); pengerjaan dipecah 2A (pengaturan, beranda,
+  tentang, kontak, struktur organisasi), 2B (berita/pengumuman), 2C (galeri, prestasi).
+- Pengaturan situs disimpan di `tb_pengaturan` (kunci-nilai; daftar kunci di `KatalogPengaturan`) dan dibaca lewat `situs('kunci')`
+  dengan cache yang dibersihkan saat disimpan. Kunci yang belum tersimpan memakai nilai bawaan katalog, jadi situs tampil utuh tanpa seeder.
+  Kunci yang sengaja dikosongkan tetap kosong. `config/sekolah.php` (`.env`) kini hanya sumber nilai bawaan identitas.
+- **Konten bawaan (sejarah, visi-misi, hero, alamat, telepon, email, jam layanan) adalah teks contoh buatan, bukan data resmi yayasan.**
+  Wajib diganti lewat Pengaturan Situs sebelum go-live. Peta (Google Maps embed) dan tautan media sosial kosong sampai diisi.
+- Foto beranda/tentang memakai foto dummy template UniPulse yang disalin ke `public/img/situs/`; ganti dengan foto asli nanti.
+  Logo dari `public/img/logo-sekolah.png` (1240x1240, 1,3 MB); header memakai salinan `logo-sekolah-256.png` agar ringan.
+- Struktur organisasi disimpan di `tb_pengurus` (nama, jabatan, urutan, unit; unit kosong = tingkat yayasan; soft delete), terpisah dari
+  `tb_pegawai` karena isinya bagan tampilan. Belum ada foto pengurus.
+- Hak akses: `pengaturan.view/update` dan `pengurus.*` hanya `super_admin` (developer yang mengelola konten situs). Petugas TU hanya
+  berita/pengumuman (§5). Ubah di `Role::permissions()` bila yayasan menginginkan lain.
+- Halaman publik: `/` (beranda), `/tentang`, `/kontak`. Menu publik `Berita` dan `PPDB` muncul otomatis saat route-nya ada.
+
 ## Data dasar (seeder)
 - Nama unit "SMP Puspita Bangsa" dan "SMK Puspita Bangsa" adalah asumsi (belum ada nama resmi).
 - Jurusan SMK: Pariwisata (`PAR`), Bisnis Manajemen (`BM`), Teknik Komputer dan Jaringan (`TKJ`),

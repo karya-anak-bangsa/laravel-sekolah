@@ -1,8 +1,8 @@
 {{-- Markup mengikuti renderSidebar() Gentelella v4 agar perilaku JS-nya (accordion, rail, drawer) tetap jalan. --}}
 <aside class="sidebar" id="sidebar" aria-label="Navigasi utama">
     <div class="sidebar-brand">
-        <div class="brand-icon">{{ mb_substr(config('sekolah.nama_singkat'), 0, 1) }}</div>
-        <div class="brand-name">{{ config('sekolah.nama_singkat') }}</div>
+        <div class="brand-icon">{{ mb_substr(situs('nama_singkat'), 0, 1) }}</div>
+        <div class="brand-name">{{ situs('nama_singkat') }}</div>
     </div>
 
     <nav class="sidebar-nav">

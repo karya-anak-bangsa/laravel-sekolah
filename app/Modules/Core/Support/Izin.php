@@ -19,6 +19,7 @@ final class Izin
         'unit-sekolah',
         'ppdb',
         'berita',
+        'pengurus',
         'pengguna',
     ];
 
@@ -28,6 +29,8 @@ final class Izin
     public const KHUSUS = [
         'pengguna.assign-role', // mengubah role pengguna, hanya super_admin
         'siswa.view-kelas', // melihat siswa hanya di kelas yang diampu (wali kelas)
+        'pengaturan.view', // pengaturan situs (identitas, kontak, profil): satu formulir, tanpa create/delete
+        'pengaturan.update',
     ];
 
     /** Seluruh permission sistem (dipakai seeder dan untuk super_admin). */

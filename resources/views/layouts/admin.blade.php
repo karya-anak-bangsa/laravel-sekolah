@@ -62,7 +62,7 @@
         </div>
 
         <footer class="footer">
-            <span>&copy; {{ now()->year }} {{ config('sekolah.nama') }}</span>
+            <span>&copy; {{ now()->year }} {{ situs('nama') }}</span>
             <span>Sistem Akademik Sekolah</span>
         </footer>
     </main>

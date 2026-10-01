@@ -9,8 +9,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title', config('sekolah.nama')) | {{ config('sekolah.nama_singkat') }}</title>
-    <meta name="description" content="@yield('description', config('sekolah.deskripsi'))">
+    <title>@yield('title', situs('nama')) | {{ situs('nama_singkat') }}</title>
+    <meta name="description" content="@yield('description', situs('deskripsi'))">
     <link rel="icon" href="{{ asset('favicon.ico') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,16 +22,16 @@
 
 <header id="header" class="header position-relative">
     <div class="container">
-        @if (config('sekolah.email') || config('sekolah.telepon'))
+        @if (situs('email') || situs('telepon'))
             <div class="header-top d-flex align-items-center justify-content-between">
                 <div class="contact-info d-none d-lg-flex align-items-center">
-                    @if (config('sekolah.email'))
+                    @if (situs('email'))
                         <i class="bi bi-envelope"></i>
-                        <a href="mailto:{{ config('sekolah.email') }}">{{ config('sekolah.email') }}</a>
+                        <a href="mailto:{{ situs('email') }}">{{ situs('email') }}</a>
                     @endif
-                    @if (config('sekolah.telepon'))
+                    @if (situs('telepon'))
                         <i class="bi bi-phone ms-4"></i>
-                        <span>{{ config('sekolah.telepon') }}</span>
+                        <span>{{ situs('telepon') }}</span>
                     @endif
                 </div>
             </div>
@@ -39,7 +39,8 @@
 
         <div class="header-main d-flex align-items-center justify-content-between">
             <a href="{{ url('/') }}" class="logo d-flex align-items-center">
-                <h1 class="sitename">{{ config('sekolah.nama_singkat') }}</h1>
+                <img src="{{ asset('img/logo-sekolah-256.png') }}" alt="" width="44" height="44" class="me-2">
+                <h1 class="sitename">{{ situs('nama_singkat') }}</h1>
             </a>
 
             <nav id="navmenu" class="navmenu">
@@ -63,22 +64,29 @@
         <div class="row gy-4">
             <div class="col-lg-6 col-md-12 footer-about">
                 <a href="{{ url('/') }}" class="logo d-flex align-items-center">
-                    <span class="sitename">{{ config('sekolah.nama') }}</span>
+                    <span class="sitename">{{ situs('nama') }}</span>
                 </a>
-                <p>{{ config('sekolah.deskripsi') }}</p>
+                <p>{{ situs('deskripsi') }}</p>
+                <div class="social-links d-flex mt-3">
+                    @foreach (['instagram' => 'bi-instagram', 'facebook' => 'bi-facebook', 'youtube' => 'bi-youtube'] as $kunci => $ikon)
+                        @if (situs($kunci))
+                            <a href="{{ situs($kunci) }}" target="_blank" rel="noopener" aria-label="{{ ucfirst($kunci) }}"><i class="bi {{ $ikon }}"></i></a>
+                        @endif
+                    @endforeach
+                </div>
             </div>
 
             <div class="col-lg-6 col-md-12 footer-contact text-center text-md-start">
                 <h4>Hubungi Kami</h4>
-                @if (config('sekolah.alamat'))<p>{{ config('sekolah.alamat') }}</p>@endif
-                @if (config('sekolah.telepon'))<p class="mt-4"><strong>Telepon:</strong> <span>{{ config('sekolah.telepon') }}</span></p>@endif
-                @if (config('sekolah.email'))<p><strong>Email:</strong> <span>{{ config('sekolah.email') }}</span></p>@endif
+                @if (situs('alamat'))<p>{{ situs('alamat') }}</p>@endif
+                @if (situs('telepon'))<p class="mt-4"><strong>Telepon:</strong> <span>{{ situs('telepon') }}</span></p>@endif
+                @if (situs('email'))<p><strong>Email:</strong> <span>{{ situs('email') }}</span></p>@endif
             </div>
         </div>
     </div>
 
     <div class="container copyright text-center mt-4">
-        <p>&copy; {{ now()->year }} <strong class="px-1 sitename">{{ config('sekolah.nama') }}</strong> Hak cipta dilindungi.</p>
+        <p>&copy; {{ now()->year }} <strong class="px-1 sitename">{{ situs('nama') }}</strong> Hak cipta dilindungi.</p>
     </div>
 </footer>
 

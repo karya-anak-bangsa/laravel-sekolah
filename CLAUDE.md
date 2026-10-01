@@ -145,7 +145,7 @@ Aturan:
 | Kesiswaan | `tb_anggota_kelas` | id_anggota_kelas, id_siswa, id_kelas |
 | PPDB | `tb_gelombang` | id_gelombang, id_tahun_ajaran, nama_gelombang, tanggal_mulai, tanggal_selesai, biaya_pendaftaran |
 | PPDB | `tb_pendaftaran` | id_pendaftaran, no_pendaftaran, id_user (akun pendaftar), id_siswa, id_unit_sekolah, id_gelombang, id_jurusan (wajib utk SMK), status, status_pembayaran, id_pegawai_verifikator — rincian lengkap di `docs/ppdb-formulir.md` |
-| Company Profile | `tb_berita`, `tb_galeri`, `tb_prestasi`, `tb_pengaturan` | lihat saat modul dikerjakan |
+| Company Profile | `tb_pengaturan` (kunci, nilai), `tb_pengurus` (id_unit_sekolah null = yayasan, nama_pengurus, jabatan, urutan) | sudah dibuat (Fase 2A); `tb_berita`, `tb_galeri`, `tb_prestasi` menyusul |
 
 Catatan desain:
 - Satu tabel `tb_pegawai` untuk guru dan TU (bukan `tb_guru` terpisah), karena kepala sekolah dan wakil
