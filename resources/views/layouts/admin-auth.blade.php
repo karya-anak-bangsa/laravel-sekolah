@@ -21,8 +21,8 @@
     <div class="auth-page">
         <div class="auth-card">
             <div class="auth-brand">
-                <div class="brand-icon">{{ mb_substr(situs('nama_singkat'), 0, 1) }}</div>
-                <div class="brand-name">{{ situs('nama_singkat') }}</div>
+                <div class="brand-icon"><i class="fa-solid fa-landmark" aria-hidden="true"></i></div>
+                <div class="brand-name">{{ situs('nama') }}</div>
             </div>
 
             @yield('content')

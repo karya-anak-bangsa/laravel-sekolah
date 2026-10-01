@@ -46,7 +46,18 @@ it('mengganti kata sandi dan menghapus kewajiban ganti', function () {
     $this->get(route('admin.dashboard'))->assertOk();
 });
 
-it('menolak penggantian dengan sandi lama salah, konfirmasi beda, terlalu lemah, atau sama dengan yang lama', function (array $input, string $kolom) {
+it('menerima password sederhana asal minimal 8 karakter, tanpa syarat kombinasi', function (string $baru) {
+    $user = akunSementara();
+
+    $this->actingAs($user)
+        ->put(route('admin.password.update'), ['password_lama' => 'Sementara1', 'password' => $baru, 'password_confirmation' => $baru])
+        ->assertSessionHasNoErrors()
+        ->assertRedirect(route('admin.dashboard'));
+
+    expect(Hash::check($baru, $user->fresh()->password))->toBeTrue();
+})->with(['huruf kecil saja' => 'hurufsaja', 'angka saja' => '12345678', 'tepat 8 karakter' => 'abcdefgh']);
+
+it('menolak penggantian dengan sandi lama salah, konfirmasi beda, terlalu pendek, atau sama dengan yang lama', function (array $input, string $kolom) {
     $user = akunSementara();
 
     $this->actingAs($user)
@@ -58,7 +69,7 @@ it('menolak penggantian dengan sandi lama salah, konfirmasi beda, terlalu lemah,
     'sandi lama salah' => [['password_lama' => 'salah', 'password' => 'SandiBaru123', 'password_confirmation' => 'SandiBaru123'], 'password_lama'],
     'konfirmasi beda' => [['password_lama' => 'Sementara1', 'password' => 'SandiBaru123', 'password_confirmation' => 'Lain12345'], 'password'],
     'terlalu pendek' => [['password_lama' => 'Sementara1', 'password' => 'Ab1', 'password_confirmation' => 'Ab1'], 'password'],
-    'tanpa angka' => [['password_lama' => 'Sementara1', 'password' => 'hurufsajaaa', 'password_confirmation' => 'hurufsajaaa'], 'password'],
+    'tujuh karakter' => [['password_lama' => 'Sementara1', 'password' => 'abcdefg', 'password_confirmation' => 'abcdefg'], 'password'],
     'sama dengan lama' => [['password_lama' => 'Sementara1', 'password' => 'Sementara1', 'password_confirmation' => 'Sementara1'], 'password'],
 ]);
 

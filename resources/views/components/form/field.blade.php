@@ -10,7 +10,10 @@
 @endphp
 <div @class([$admin ? 'form-group' : 'mb-3'])>
     @if ($label)
-        <label for="{{ $id }}" class="form-label">{{ $label }}@if ($required)<span class="{{ $admin ? 'required' : 'text-danger' }}"> *</span>@endif</label>
+        <label for="{{ $id }}" class="form-label">
+            @if ($required && $admin)<span class="required">*</span>
+            @endif{{ $label }}@if ($required && ! $admin)<span class="text-danger"> *</span>@endif
+        </label>
     @endif
 
     {{ $slot }}

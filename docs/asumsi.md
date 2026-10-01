@@ -57,7 +57,8 @@ bila ada jawaban yayasan, perbarui di sini dan buat migration/kode baru bila per
 - Menonaktifkan/mengaktifkan akun memakai permission `pengguna.delete` (hanya super_admin). TU boleh ubah username dan reset sandi
   akun pegawai di unitnya, kecuali akun super_admin. Akun sendiri tidak bisa dinonaktifkan, dan super_admin tidak bisa
   mencabut role super_admin dari dirinya sendiri.
-- Kata sandi baru minimal 8 karakter, berisi huruf dan angka, serta berbeda dari yang lama.
+- Kata sandi baru minimal 8 karakter (tanpa syarat kombinasi huruf besar/kecil, angka, atau simbol; keputusan
+  developer 2026-10-01) serta berbeda dari yang lama.
 - Akun Super Administrator awal dari seeder juga wajib mengganti kata sandi saat login pertama.
 
 ## Kesiswaan (Fase 1C)

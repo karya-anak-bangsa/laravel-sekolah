@@ -25,7 +25,13 @@ it('menampilkan halaman login admin', function () {
     $this->get(route('admin.login'))
         ->assertOk()
         ->assertSee('Masuk ke Panel Admin')
-        ->assertSee('name="username"', escape: false);
+        ->assertSee('Yayasan Puspita Bangsa')
+        ->assertSee('Gunakan username dan password kepegawaian Anda.')
+        ->assertSee('name="username"', escape: false)
+        ->assertSeeInOrder(['*</span>', 'Username'], escape: false)
+        ->assertSeeInOrder(['*</span>', 'Password'], escape: false)
+        ->assertDontSee('Kata sandi')
+        ->assertSee('data-toggle-password="#password"', escape: false);
 });
 
 it('mengizinkan pegawai masuk dengan username dan password lalu menuju dashboard', function () {
@@ -54,8 +60,8 @@ it('menolak password salah dan username tak dikenal dengan pesan yang sama', fun
     $tak_ada = $this->from(route('admin.login'))
         ->post(route('admin.login.store'), ['username' => 'tidak.ada', 'password' => 'rahasia123']);
 
-    $salah->assertRedirect(route('admin.login'))->assertSessionHasErrors(['username' => 'Username atau kata sandi salah.']);
-    $tak_ada->assertRedirect(route('admin.login'))->assertSessionHasErrors(['username' => 'Username atau kata sandi salah.']);
+    $salah->assertRedirect(route('admin.login'))->assertSessionHasErrors(['username' => 'Username atau password salah.']);
+    $tak_ada->assertRedirect(route('admin.login'))->assertSessionHasErrors(['username' => 'Username atau password salah.']);
     $this->assertGuest();
 });
 
@@ -64,7 +70,7 @@ it('menolak akun pendaftar di login admin dengan pesan yang sama', function () {
     $pendaftar->assignRole(Role::Pendaftar->value);
 
     $this->post(route('admin.login.store'), ['username' => 'budi', 'password' => 'rahasia123'])
-        ->assertSessionHasErrors(['username' => 'Username atau kata sandi salah.']);
+        ->assertSessionHasErrors(['username' => 'Username atau password salah.']);
 
     $this->assertGuest();
 });
@@ -80,7 +86,7 @@ it('menolak akun yang sudah dihapus (soft delete)', function () {
 
 it('mewajibkan username dan password', function () {
     $this->post(route('admin.login.store'), [])
-        ->assertSessionHasErrors(['username' => 'Username wajib diisi.', 'password' => 'Kata sandi wajib diisi.']);
+        ->assertSessionHasErrors(['username' => 'Username wajib diisi.', 'password' => 'Password wajib diisi.']);
 });
 
 it('membatasi percobaan login setelah 5 kali gagal, bahkan dengan password yang benar', function () {

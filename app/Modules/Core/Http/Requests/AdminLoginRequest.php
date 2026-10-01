@@ -24,7 +24,7 @@ class AdminLoginRequest extends FormRequest
     {
         return [
             'username.required' => 'Username wajib diisi.',
-            'password.required' => 'Kata sandi wajib diisi.',
+            'password.required' => 'Password wajib diisi.',
         ];
     }
 }

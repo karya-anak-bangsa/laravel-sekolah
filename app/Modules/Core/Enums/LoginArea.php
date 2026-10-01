@@ -44,7 +44,7 @@ enum LoginArea: string
     public function pesanGagal(): string
     {
         return match ($this) {
-            self::Admin => 'Username atau kata sandi salah.',
+            self::Admin => 'Username atau password salah.',
             self::Ppdb => 'Nomor HP atau kata sandi salah.',
         };
     }

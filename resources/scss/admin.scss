@@ -1,6 +1,13 @@
 // Panel admin — Gentelella v4 (npm). Hanya override dan komponen tambahan milik kita di sini;
 // jangan edit file di node_modules.
 @use 'gentelella/scss/v4/main';
+// Font Awesome Free (npm). Hanya inti + gaya solid; path font diarahkan agar Vite ikut menyalinnya.
+// Ikon dipakai dengan <i class="fa-solid fa-landmark"></i>. Lisensi: ikon CC BY 4.0, font OFL, kode MIT.
+@use '../../node_modules/@fortawesome/fontawesome-free/scss/variables' with (
+  $font-path: '../../node_modules/@fortawesome/fontawesome-free/webfonts'
+);
+@use '../../node_modules/@fortawesome/fontawesome-free/scss/fontawesome';
+@use '../../node_modules/@fortawesome/fontawesome-free/scss/solid';
 
 // Menu akun di topbar (pengganti menu bawaan template yang berbahasa Inggris)
 .acct {
@@ -73,3 +80,27 @@
 .info { margin-bottom: 14px; min-width: 0; }
 .info-label { font-size: 11.5px; color: var(--text-muted); margin-bottom: 2px; }
 .info-value { font-size: 13.5px; color: var(--text); overflow-wrap: anywhere; }
+
+// Kolom password dengan tombol mata (x-form.input type="password")
+.input-password {
+  position: relative;
+
+  .form-control { padding-inline-end: 40px; }
+}
+.input-password-toggle {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-end: 0;
+  width: 38px;
+  display: flex; align-items: center; justify-content: center;
+  background: none; border: 0;
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  cursor: pointer;
+
+  &:hover { color: var(--text); }
+  &:focus-visible { outline: 2px solid var(--primary); outline-offset: -2px; }
+  svg[hidden] { display: none; }
+}
+
+.auth-brand .brand-icon .fa-solid { font-size: 16px; }

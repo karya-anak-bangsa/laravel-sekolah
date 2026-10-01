@@ -16,7 +16,7 @@ class GantiPasswordRequest extends FormRequest
     {
         return [
             'password_lama' => ['required', 'string', 'current_password'],
-            'password' => ['required', 'string', 'confirmed', 'different:password_lama', Password::min(8)->letters()->numbers()],
+            'password' => ['required', 'string', 'confirmed', 'different:password_lama', Password::min(8)],
         ];
     }
 

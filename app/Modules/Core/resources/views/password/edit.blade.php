@@ -4,7 +4,7 @@
 @section('pretitle', 'Akun Saya')
 
 @section('content')
-    <x-admin.card title="Ganti kata sandi" subtitle="Minimal 8 karakter, mengandung huruf dan angka." style="max-width:520px">
+    <x-admin.card title="Ganti kata sandi" subtitle="Minimal 8 karakter." style="max-width:520px">
         <form method="POST" action="{{ route('admin.password.update') }}">
             @csrf
             @method('PUT')
