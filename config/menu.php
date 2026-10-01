@@ -36,6 +36,8 @@ return [
             'label' => 'Situs',
             'items' => [
                 ['text' => 'Pengaturan Situs', 'icon' => 'settings', 'route' => 'admin.pengaturan.edit', 'permission' => 'pengaturan.view', 'active' => 'admin.pengaturan.*'],
+                ['text' => 'Galeri Foto', 'icon' => 'pages', 'route' => 'admin.galeri.index', 'permission' => 'galeri.view', 'active' => 'admin.galeri.*'],
+                ['text' => 'Prestasi', 'icon' => 'forms', 'route' => 'admin.prestasi.index', 'permission' => 'prestasi.view', 'active' => 'admin.prestasi.*'],
                 ['text' => 'Struktur Organisasi', 'icon' => 'users', 'route' => 'admin.pengurus.index', 'permission' => 'pengurus.view', 'active' => 'admin.pengurus.*'],
                 ['text' => 'Berita & Pengumuman', 'icon' => 'pages', 'route' => 'admin.berita.index', 'permission' => 'berita.view', 'active' => 'admin.berita.*'],
             ],
@@ -52,6 +54,8 @@ return [
         ['text' => 'Beranda', 'route' => 'home'],
         ['text' => 'Tentang', 'route' => 'tentang'],
         ['text' => 'Berita', 'route' => 'berita.index'],
+        ['text' => 'Galeri', 'route' => 'galeri'],
+        ['text' => 'Prestasi', 'route' => 'prestasi'],
         ['text' => 'PPDB', 'route' => 'ppdb.index'],
         ['text' => 'Kontak', 'route' => 'kontak'],
     ],

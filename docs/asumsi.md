@@ -99,6 +99,35 @@ bila ada jawaban yayasan, perbarui di sini dan buat migration/kode baru bila per
   berita/pengumuman (§5). Ubah di `Role::permissions()` bila yayasan menginginkan lain.
 - Halaman publik: `/` (beranda), `/tentang`, `/kontak`. Menu publik `Berita` dan `PPDB` muncul otomatis saat route-nya ada.
 
+## Berita & pengumuman (Fase 2B)
+- `tb_berita`: jenis (berita/pengumuman), judul, slug, ringkasan (opsional), isi, gambar (opsional), status (draf/terbit), tanggal terbit,
+  penulis (`id_pegawai_penulis`, kosong bila dibuat akun tanpa pegawai), soft delete. Yang tampil di situs: status terbit dan tanggal terbit
+  sudah tiba (tanggal mendatang = tayang terjadwal tanpa cron). Penulis tidak ditampilkan di situs publik.
+- Isi berupa **teks biasa** (paragraf dipisah baris kosong), bukan editor WYSIWYG: tanpa package baru dan tanpa risiko XSS. Bila TU kelak
+  butuh format (tebal, tautan), tambahkan editor lewat keputusan terpisah.
+- Slug dibuat dari judul saat berita dibuat dan **tidak berubah** walau judul diubah (tautan lama tetap hidup); bentrok diberi akhiran -2, -3
+  (termasuk dengan berita yang sudah dihapus).
+- Gambar: JPG/PNG/WebP maksimal 4 MB dan 8000x8000 px; dikecilkan ke lebar maksimal 1200 px dan disimpan sebagai WebP (kualitas 80) di
+  disk `public` folder `berita/`, memakai GD bawaan PHP lewat `PengolahGambar` (akan dipakai ulang galeri/prestasi). Gambar lama dibuang saat
+  diganti/dihapus; berita yang di-soft delete menyimpan gambarnya. Lokal dan hosting perlu `php artisan storage:link` sekali.
+- Beranda menampilkan 4 berita terbaru (di-cache 10 menit dan dibersihkan saat berita disimpan/dihapus). Daftar publik 9 per halaman,
+  bisa difilter jenis. Draf, terjadwal, dan yang dihapus mengembalikan 404.
+- Hak akses: `berita.*` untuk petugas TU dan super_admin (sesuai matriks yang sudah ada). Belum ada pembatasan per unit; berita bersifat tingkat yayasan.
+
+## Galeri dan prestasi (Fase 2C)
+- Disetujui 2026-10-01: galeri berupa kumpulan foto berjudul (tanpa album per kegiatan); prestasi berisi judul, nama peraih,
+  tingkat (Sekolah, Kota/Kabupaten, Provinsi, Nasional), tahun, unit (kosong = yayasan), dan foto opsional.
+- `tb_galeri`: judul, `gambar` (lebar maks. 1600 px untuk lightbox) dan `gambar_kecil` (480 px untuk grid), keduanya WebP. Satu foto per
+  unggahan (belum ada unggah banyak sekaligus). `tb_prestasi`: foto opsional WebP lebar maks. 1200 px. Keduanya soft delete; berkas gambar
+  lama dibuang saat diganti, dan disimpan bila datanya hanya di-soft delete.
+- Urutan publik: galeri terbaru dulu (24 per halaman, lightbox GLightbox); prestasi tahun terbaru dulu, lalu tingkat tertinggi, 12 per halaman,
+  bisa difilter tingkat. Beranda menampilkan 3 prestasi dan 6 foto terbaru.
+- Hak akses: `galeri.*` dan `prestasi.*` hanya `super_admin`, sama seperti struktur organisasi (§5 hanya menyebut berita untuk TU).
+  Bila TU diizinkan, cukup tambahkan `Izin::crud('galeri')`/`crud('prestasi')` di `Role::permissions()`.
+- Cache beranda (`CacheBeranda`) menyimpan **atribut mentah (array)**, bukan objek model: Laravel tidak meng-unserialize kelas PHP dari cache
+  (`serializable_classes` = false), sehingga model yang di-cache di driver `database`/`file` kembali sebagai `__PHP_Incomplete_Class`. Cache
+  `array` pada test tidak men-serialize; `BerandaCacheTest` meniru cache nyata dengan `serialize => true`. Jangan menyimpan model/objek ke cache.
+
 ## Data dasar (seeder)
 - Nama unit "SMP Puspita Bangsa" dan "SMK Puspita Bangsa" adalah asumsi (belum ada nama resmi).
 - Jurusan SMK: Pariwisata (`PAR`), Bisnis Manajemen (`BM`), Teknik Komputer dan Jaringan (`TKJ`),

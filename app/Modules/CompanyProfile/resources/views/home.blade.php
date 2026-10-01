@@ -95,6 +95,110 @@
         </section>
     @endif
 
+    @if ($beritaTerbaru->isNotEmpty())
+        <section id="recent-news" class="recent-news section">
+            <div class="container section-title" data-aos="fade-up">
+                <h2>Berita &amp; Pengumuman</h2>
+                <p>Kabar terbaru dari {{ situs('nama_singkat') }}</p>
+            </div>
+
+            <div class="container" data-aos="fade-up" data-aos-delay="100">
+                <div class="row gy-4">
+                    @php($utama = $beritaTerbaru->first())
+                    <div class="col-lg-5" data-aos="fade-right" data-aos-delay="100">
+                        <article class="featured-post">
+                            <figure class="featured-img">
+                                <img src="{{ $utama->urlGambar() ?? asset('img/situs/campus-5.webp') }}" alt="" class="img-fluid" loading="lazy">
+                                <a href="{{ route('berita.index', ['jenis' => $utama->jenis->value]) }}" class="featured-tag">{{ $utama->jenis->label() }}</a>
+                            </figure>
+                            <div class="featured-body">
+                                <h3 class="featured-title"><a href="{{ route('berita.show', $utama->slug) }}">{{ $utama->judul }}</a></h3>
+                                <p class="featured-excerpt">{{ $utama->ringkasanTampil() }}</p>
+                                <div class="featured-meta">
+                                    <span class="meta-date"><i class="bi bi-clock"></i> {{ $utama->tanggal_terbit->translatedFormat('d F Y') }}</span>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-lg-7" data-aos="fade-left" data-aos-delay="200">
+                        <div class="side-posts">
+                            @foreach ($beritaTerbaru->skip(1) as $item)
+                                <article class="side-post-item">
+                                    <div class="side-post-img">
+                                        <img src="{{ $item->urlGambar() ?? asset('img/situs/campus-5.webp') }}" alt="" class="img-fluid" loading="lazy">
+                                    </div>
+                                    <div class="side-post-content">
+                                        <a href="{{ route('berita.index', ['jenis' => $item->jenis->value]) }}" class="side-tag">{{ $item->jenis->label() }}</a>
+                                        <h4 class="side-post-title"><a href="{{ route('berita.show', $item->slug) }}">{{ $item->judul }}</a></h4>
+                                        <div class="side-post-meta">
+                                            <span class="side-date">{{ $item->tanggal_terbit->translatedFormat('d F Y') }}</span>
+                                        </div>
+                                    </div>
+                                </article>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-4"><a href="{{ route('berita.index') }}" class="feat-link">Semua berita &amp; pengumuman <i class="bi bi-arrow-right"></i></a></div>
+            </div>
+        </section>
+    @endif
+
+    @if ($prestasiTerbaru->isNotEmpty())
+        <section id="prestasi" class="section light-background">
+            <div class="container section-title" data-aos="fade-up">
+                <h2>Prestasi</h2>
+                <p>Capaian terbaru peserta didik {{ situs('nama_singkat') }}</p>
+            </div>
+
+            <div class="container" data-aos="fade-up" data-aos-delay="100">
+                <div class="row g-4 justify-content-center">
+                    @foreach ($prestasiTerbaru as $item)
+                        <div class="col-lg-4 col-md-6">
+                            <article class="card h-100 shadow-sm">
+                                @if ($item->gambar)
+                                    <img src="{{ $item->urlGambar() }}" alt="{{ $item->judul }}" class="card-img-top" loading="lazy" style="aspect-ratio:16/9;object-fit:cover">
+                                @endif
+                                <div class="card-body">
+                                    <div class="mb-2">
+                                        <span class="badge text-bg-primary">{{ $item->tingkat->label() }}</span>
+                                        <span class="badge text-bg-secondary">{{ $item->tahun }}</span>
+                                    </div>
+                                    <h5 class="card-title">{{ $item->judul }}</h5>
+                                    <p class="card-text text-muted mb-0"><i class="bi bi-trophy"></i> {{ $item->nama_peraih }}</p>
+                                </div>
+                            </article>
+                        </div>
+                    @endforeach
+                </div>
+                <div class="text-center mt-4"><a href="{{ route('prestasi') }}" class="feat-link">Semua prestasi <i class="bi bi-arrow-right"></i></a></div>
+            </div>
+        </section>
+    @endif
+
+    @if ($galeriTerbaru->isNotEmpty())
+        <section id="galeri" class="section">
+            <div class="container section-title" data-aos="fade-up">
+                <h2>Galeri</h2>
+                <p>Potret kegiatan di {{ situs('nama_singkat') }}</p>
+            </div>
+
+            <div class="container" data-aos="fade-up" data-aos-delay="100">
+                <div class="row g-3">
+                    @foreach ($galeriTerbaru as $foto)
+                        <div class="col-lg-2 col-md-4 col-6">
+                            <a href="{{ $foto->urlGambar() }}" class="glightbox d-block" data-gallery="beranda" data-title="{{ $foto->judul }}">
+                                <img src="{{ $foto->urlGambarKecil() }}" alt="{{ $foto->judul }}" class="img-fluid rounded w-100" loading="lazy" style="aspect-ratio:1/1;object-fit:cover">
+                            </a>
+                        </div>
+                    @endforeach
+                </div>
+                <div class="text-center mt-4"><a href="{{ route('galeri') }}" class="feat-link">Lihat semua foto <i class="bi bi-arrow-right"></i></a></div>
+            </div>
+        </section>
+    @endif
+
     @if (Route::has('ppdb.index'))
         <section id="ajakan-ppdb" class="section">
             <div class="container text-center" data-aos="fade-up">

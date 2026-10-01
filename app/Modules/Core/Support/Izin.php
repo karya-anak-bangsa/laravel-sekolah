@@ -19,6 +19,8 @@ final class Izin
         'unit-sekolah',
         'ppdb',
         'berita',
+        'galeri',
+        'prestasi',
         'pengurus',
         'pengguna',
     ];
