@@ -1,0 +1,18 @@
+// Tata letak halaman panel admin.
+
+// Footer selalu di dasar layar: saat konten pendek, ruang kosong ada di antara konten dan footer,
+// bukan di bawah footer. Saat konten panjang, footer mengikuti di akhir halaman seperti biasa.
+.main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+.main > .page-wrapper {
+  flex: 1 0 auto;
+  min-width: 0;
+}
+.main > .footer { flex-shrink: 0; }
+
+// Kartu halaman masuk: cukup lebar agar subjudul tidak patah satu kata ("Anda.") di baris kedua.
+.auth-card { max-width: 28rem; }

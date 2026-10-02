@@ -1,0 +1,112 @@
+// Skala tipografi panel admin.
+//
+// Gentelella memakai ukuran px tetap (13px untuk hampir semua teks), sehingga jenjang judul → isi → keterangan
+// terasa datar dan tidak ikut membesar di layar lebar. Di sini semua ukuran teks diganti dengan satu skala
+// bernama (rem), dan ukuran dasarnya (html) membesar halus mengikuti lebar layar.
+//
+// Mengubah tampilan seluruh panel cukup lewat nilai di bawah ini; jangan menulis font-size mentah di tempat lain.
+//
+// Ukuran sebenarnya (px) = nilai rem × ukuran html:
+//   lebar viewport  ≤1600 → html 16px   (laptop 14"–16" pada skala Windows 125–150%)
+//   lebar viewport   1920 → html ≈17,7px (monitor 24" 1080p pada skala 100%)
+//   lebar viewport ≥2000 → html 18px    (batas atas)
+
+:root {
+  --fs-xs: 0.75rem;   // 12px  keterangan: label grup menu, judul kolom tabel, bantuan form, footer, status
+  --fs-base: 0.875rem; // 14px  isi: teks, menu, sel tabel, input, tombol
+  --fs-md: 1rem;      // 16px  judul kartu
+  --fs-lg: 1.125rem;  // 18px  nama brand
+  --fs-xl: 1.5rem;    // 24px  judul halaman
+
+  --lh-heading: 1.25;
+
+  --control-h: 2.375rem; // tinggi input dan tombol standar (≈38px)
+  --control-h-sm: 2rem;  // tombol kecil di baris tabel (32px)
+
+  // Token bawaan Gentelella: dipakai oleh body.
+  --font-size: var(--fs-base);
+}
+
+html {
+  font-size: clamp(100%, calc(62.5% + 0.4vw), 112.5%);
+}
+
+// ── Shell: sidebar & topbar ────────────────────────────────────────────────
+.brand-icon { font-size: var(--fs-base); }
+.brand-name { font-size: var(--fs-lg); }
+.brand-name small { font-size: var(--fs-base); }
+.nav-label { font-size: var(--fs-xs); }
+.nav-link { font-size: var(--fs-base); }
+.sidebar-user .avatar { font-size: var(--fs-xs); }
+.sidebar-user-info .name { font-size: var(--fs-base); }
+.sidebar-user-info .role { font-size: var(--fs-xs); }
+.breadcrumb { font-size: var(--fs-base); }
+.tb-avatar { font-size: var(--fs-xs); }
+
+// ── Kepala halaman ─────────────────────────────────────────────────────────
+.page-pretitle { font-size: var(--fs-xs); }
+.page-title {
+  font-size: var(--fs-xl);
+  line-height: var(--lh-heading);
+  letter-spacing: -0.01em;
+}
+
+// ── Kartu & tabel ──────────────────────────────────────────────────────────
+.card-title {
+  font-size: var(--fs-md);
+  line-height: var(--lh-heading);
+}
+.card-subtitle { font-size: var(--fs-xs); }
+
+table.table { font-size: var(--fs-base); }
+table.table th { font-size: var(--fs-xs); }
+table.table td { padding-block: 0.625rem; }
+.cell-mono { font-size: var(--fs-xs); }
+.status { font-size: var(--fs-xs); }
+.chip {
+  height: 1.5rem;
+  font-size: var(--fs-xs);
+}
+.alert { font-size: var(--fs-base); }
+
+// ── Tombol & form ──────────────────────────────────────────────────────────
+.btn {
+  height: var(--control-h);
+  font-size: var(--fs-base);
+}
+.btn svg { width: 1rem; height: 1rem; }
+.btn-sm {
+  height: var(--control-h-sm);
+  font-size: var(--fs-xs);
+}
+.btn-icon.btn-sm { width: var(--control-h-sm); }
+
+.form-label {
+  font-size: var(--fs-base);
+  font-weight: var(--font-weight-medium);
+}
+.form-control {
+  height: var(--control-h);
+  font-size: var(--fs-base);
+}
+.form-help,
+.form-error { font-size: var(--fs-xs); }
+
+.form-check { font-size: var(--fs-base); }
+
+.pagination .page-info { font-size: var(--fs-xs); }
+.pagination .page-btn { font-size: var(--fs-base); }
+.pagination .page-ellipsis { font-size: var(--fs-base); }
+
+// ── Halaman masuk ──────────────────────────────────────────────────────────
+.auth-brand .brand-name { font-size: var(--fs-lg); }
+.auth-title {
+  font-size: var(--fs-xl);
+  line-height: var(--lh-heading);
+}
+.auth-subtitle { font-size: var(--fs-base); }
+.auth-actions { font-size: var(--fs-base); }
+.auth-footer { font-size: var(--fs-xs); }
+
+// ── Footer ─────────────────────────────────────────────────────────────────
+.footer { font-size: var(--fs-xs); }

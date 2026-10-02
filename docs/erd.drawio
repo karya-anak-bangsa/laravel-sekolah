@@ -1,6 +1,6 @@
 <mxfile host="Electron" agent="Claude Code">
   <diagram id="erd-sas" name="ERD SAS">
-    <mxGraphModel dx="1269" dy="722" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1650" pageHeight="2200" math="0" shadow="0">
+    <mxGraphModel dx="1209" dy="688" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1650" pageHeight="2200" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -327,7 +327,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="t_tb_user" parent="1" style="shape=table;startSize=28;container=1;collapsible=0;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;fillColor=#1F6FB2;fontColor=#FFFFFF;strokeColor=#1F6FB2;fontSize=13;" value="tb_user" vertex="1">
-          <mxGeometry height="228" width="250" x="60" y="572" as="geometry" />
+          <mxGeometry height="228" width="250" x="40" y="572" as="geometry" />
         </mxCell>
         <mxCell id="r_tb_user_0" parent="t_tb_user" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=#FFFFFF;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;strokeColor=#E5E7EB;" value="" vertex="1">
           <mxGeometry height="20" width="250" y="28" as="geometry" />

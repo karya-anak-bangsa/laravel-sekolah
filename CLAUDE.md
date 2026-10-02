@@ -56,6 +56,11 @@ Aturan:
   `layouts/admin.blade.php`, `layouts/admin-auth.blade.php`, `layouts/public.blade.php`, `<x-admin.card>`,
   `<x-admin.table>`, `<x-form.input theme="admin|public">`, dst. Menu di `config/menu.php` (disaring
   per route dan permission oleh `App\Support\Menu`).
+- Tampilan panel admin (override Gentelella) diatur di `resources/scss/admin/`: `_tipografi.scss` (skala ukuran teks
+  12/14/16/18/24 px, rem, ikut membesar di layar lebar), `_warna.scss` (sidebar, menu aktif, brand icon), dan
+  `_tata-letak.scss` (footer di dasar layar). Pakai token (`var(--fs-base)`, `--sidebar-bg`, dst.), jangan menulis
+  `font-size` atau warna sidebar mentah di tempat lain. Ikon memakai Font Awesome Free (`<i class="fa-solid fa-…">`)
+  atau `<x-admin.icon>`.
 - Pint mengecualikan folder template (`pint.json`).
 - File lisensi UniPulse tidak di-commit.
 

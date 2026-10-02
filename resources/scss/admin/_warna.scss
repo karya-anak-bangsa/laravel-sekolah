@@ -1,0 +1,70 @@
+// Warna menu sidebar panel admin.
+//
+// Bawaan Gentelella: teks menu abu-abu (#7b8fa3) dan latar menu aktif hijau transparan 8% di atas sidebar
+// biru tua. Kontras latar aktif terhadap sidebar hanya 1,14:1, jadi menu aktif nyaris tak terlihat.
+//
+// Kontras (terhadap sidebar #1a2332 / teks putih di atas latar aktif), batas WCAG: teks 4,5:1, komponen UI 3:1.
+//   #1ABB9C (hijau merek)  → putih 2,43   di bawah batas 4,5:1 untuk teks putih (dipakai atas permintaan: lebih hidup)
+//   #0e7f6b                → putih 4,92 · sidebar 3,21   layak; sekarang dipakai untuk brand icon
+//   rgba(26,187,156,.30)   → putih 9,00 · sidebar 1,76   terbaca tetapi tidak menonjol
+// Bila teks menu aktif terasa kurang jelas di hijau terang, ganti --nav-active-text menjadi #0f1b2a (kontras 7,1:1).
+//
+// Sidebar: bawaan #1a2332 (hampir hitam, HSL 218/32/15) berkontras 14,7:1 terhadap isi #f5f7fb — terlalu tajam.
+// Dicoba #334155 (9,7:1) tetapi di layar OLED wide-gamut terasa pudar: terangnya naik sementara kejenuhannya
+// turun (HSL 215/25/27), jadi tampak seperti abu-abu. Dipakai #22344f (HSL 216/40/22; 11,7:1): lebih terang
+// dari bawaan tetapi kejenuhan biru dinaikkan sehingga tidak keruh.
+// Menu aktif tetap hijau solid (rona hijau vs biru tetap menonjol); varian aktif abu-abu transparan dicoba dan
+// terasa "kurang hidup". Tema gelap tidak ikut berubah: di sana sidebar sudah lebih terang dari isi.
+//
+// Mengganti warna sidebar atau menu aktif cukup lewat --sidebar-bg dan --sidebar-active di bawah.
+// Kontras label grup (putih 60%) di sidebar ini 5,6:1; jika sidebar diterangkan lagi, naikkan alfanya.
+
+:root {
+  --nav-text: #ffffff;
+  --sidebar-text-hover: #ffffff;
+  --sidebar-hover: rgba(255, 255, 255, 0.1);
+  --sidebar-active: #1abb9c; // latar menu aktif
+  --nav-active-text: #ffffff;
+  --brand-icon-bg: #0e7f6b; // latar ikon brand (sidebar dan halaman masuk); sebelumnya saling bertukar dengan menu aktif
+  --sidebar-bg: #22344f;
+}
+[data-theme='dark'] { --sidebar-bg: #1a2332; }
+
+// Hanya teks menu yang jadi putih. Token --sidebar-text sengaja tidak diubah karena juga dipakai
+// teks sekunder di sidebar (peran pengguna), yang harus tetap lebih redup dari menu.
+.nav-link,
+.nav-sublink { color: var(--nav-text); }
+
+.nav-link.active,
+.nav-sublink.active {
+  color: var(--nav-active-text);
+  font-weight: var(--font-weight-bold);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.brand-icon,
+.auth-brand .brand-icon { background: var(--brand-icon-bg); }
+
+// Ikon ikut lebih jelas; sebelumnya 50% sehingga tenggelam di samping teks putih.
+.nav-link .icon { opacity: 0.85; }
+.nav-link:hover .icon,
+.nav-link.active .icon { opacity: 1; }
+
+// Label grup (UMUM, MASTER DATA, ...): tetap redup agar hirarkinya di bawah menu, tetapi terbaca.
+// Bawaan rgba(123,143,163,.5) hanya berkontras ±2,4:1.
+.nav-label { color: rgba(255, 255, 255, 0.6); }
+
+// Tombol bahaya di baris tabel (Hapus, Nonaktifkan): bawaan merah solid, dan karena muncul di setiap baris
+// jadi elemen paling mencolok di halaman. Dibuat tenang (putih, teks merah 4,6:1) dan baru terisi merah saat
+// disorot. Konfirmasi browser sebelum menghapus tidak berubah (components/admin/delete-form).
+table.table .btn-danger {
+  background: var(--bg-surface);
+  color: var(--red);
+  border-color: var(--border-color);
+  box-shadow: var(--shadow);
+}
+table.table .btn-danger:hover {
+  background: var(--red);
+  color: #ffffff;
+  border-color: #a82b2b;
+}
